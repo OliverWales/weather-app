@@ -1,0 +1,25 @@
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+public class JPanelWithBackgroundImage extends JPanel {
+
+    private BufferedImage backgroundImage;
+
+    // Some code to initialize the background image.
+    // Here, we use the constructor to load the image. This
+    // can vary depending on the use case of the panel.
+    public JPanelWithBackgroundImage(String fileName) throws IOException {
+        backgroundImage = ImageIO.read(new File(fileName));
+    }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Draw the background image.
+        g.drawImage(backgroundImage, 0,0, (int)1080/3, (int) 1920/6, 0, 0, backgroundImage.getWidth(), backgroundImage.getHeight(), null);
+
+    }
+}
