@@ -41,7 +41,7 @@ public class Weather {
         return weather.get(0).getAsJsonObject().get("main").getAsString();
     }
 
-    // Takes json string, returns weather type
+    // Takes json string, returns weather description
     public static String getDesc(JsonObject jsonObject) {
         JsonArray weather = jsonObject.getAsJsonArray("weather");
         return weather.get(0).getAsJsonObject().get("description").getAsString();
