@@ -29,6 +29,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import com.google.gson.JsonObject;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -41,13 +43,14 @@ import java.util.List;
 /* ComboBoxDemo2.java requires no other files. */
 public class app extends JPanel
         implements ActionListener {
-    JLabel result;
-    String currentPattern;
+    JLabel temperature;
+    JLabel type;
+    JLabel description;
+    JsonObject currentPattern;
 
     public app() throws IOException {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         List<String> patternExamples = Files.readAllLines(Paths.get("/home/archie/Documents/camb/app/citylist.txt"));
-        currentPattern = patternExamples.get(0);
 
         //Set up the UI for selecting a pattern.
         JLabel patternLabel1 = new JLabel("Enter your destination: ");
@@ -58,15 +61,32 @@ public class app extends JPanel
         patternList.addActionListener(this);
 
         //Create the UI for displaying result.
-        JLabel resultLabel = new JLabel("Temperature",
+        JLabel temperatureLabel = new JLabel("Temperature",
                 JLabel.LEADING); //== LEFT
-        result = new JLabel(" ");
-        result.setForeground(Color.black);
-        result.setBorder(BorderFactory.createCompoundBorder(
+        JLabel typeLabel = new JLabel("Type",
+                JLabel.LEADING); //== LEFT
+        JLabel descriptionLabel = new JLabel("Description",
+                JLabel.LEADING); //== LEFT
+        temperature = new JLabel(" ");
+        temperature.setForeground(Color.black);
+        temperature.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.black),
                 BorderFactory.createEmptyBorder(5,5,5,5)
         ));
 
+        type = new JLabel(" ");
+        type.setForeground(Color.black);
+        type.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.black),
+                BorderFactory.createEmptyBorder(5,5,5,5)
+        ));
+
+        description = new JLabel(" ");
+        description.setForeground(Color.black);
+        description.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.black),
+                BorderFactory.createEmptyBorder(5,5,5,5)
+        ));
 
         //Lay out everything.
         JPanel patternPanel = new JPanel();
@@ -77,8 +97,12 @@ public class app extends JPanel
         patternPanel.add(patternList);
 
         JPanel resultPanel = new JPanel(new GridLayout(0, 1));
-        resultPanel.add(resultLabel);
-        resultPanel.add(result);
+        resultPanel.add(temperatureLabel);
+        resultPanel.add(temperature);
+        resultPanel.add(typeLabel);
+        resultPanel.add(type);
+        resultPanel.add(descriptionLabel);
+        resultPanel.add(description);
 
         patternPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         resultPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -94,9 +118,13 @@ public class app extends JPanel
     public void actionPerformed(ActionEvent e) {
         JComboBox cb = (JComboBox)e.getSource();
         String newSelection = (String)cb.getSelectedItem();
-        currentPattern = newSelection;
-        result.setForeground(Color.black);
-        result.setText(Double.toString(Weather.getTemp(Weather.getCurrentWeatherObject(currentPattern))));
+        currentPattern = Weather.getCurrentWeatherObject(newSelection);
+        temperature.setForeground(Color.black);
+        type.setForeground(Color.black);
+        description.setForeground(Color.black);
+        temperature.setText(Double.toString(Weather.getTemp(currentPattern)));
+        type.setText(Weather.getType(currentPattern));
+        description.setText(Weather.getDesc(currentPattern));
     }
 
     /**
