@@ -30,6 +30,7 @@ public class Weather {
 
     // Takes json string, returns temperature
     public static double getTemp(JsonObject jsonObject) {
+        if (jsonObject == null) return Double.NEGATIVE_INFINITY;
         JsonElement main = jsonObject.get("main");
         double temp = main.getAsJsonObject().get("temp").getAsDouble() - ZERO_Celcius;
         return Math.round(temp * 10)/10.0;
@@ -37,12 +38,14 @@ public class Weather {
 
     // Takes json string, returns weather type
     public static String getType(JsonObject jsonObject) {
+        if (jsonObject == null) return "null";
         JsonArray weather = jsonObject.getAsJsonArray("weather");
         return weather.get(0).getAsJsonObject().get("main").getAsString();
     }
 
     // Takes json string, returns weather description
     public static String getDesc(JsonObject jsonObject) {
+        if (jsonObject == null) return "null";
         JsonArray weather = jsonObject.getAsJsonArray("weather");
         return weather.get(0).getAsJsonObject().get("description").getAsString();
     }
