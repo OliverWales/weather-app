@@ -4,21 +4,8 @@ import java.awt.*;
 class UI {
 
     public static void main(String[] args) throws Exception{
-        /* JFrame f = new JFrame("stackoverflow") {
-            private Image backgroundImage = ImageIO.read(new File("src/01.jpg"));
-            public void paint( Graphics g ) {
-                super.paint(g);
-                g.drawImage(backgroundImage, 0,0, (int)1080/3, (int) 1920/6, 0, 0, 1920, 1281, null);
-            }
-            private Image backgroundImage2 = ImageIO.read(new File("src/02.jpg"));
-            public void paint2( Graphics g ) {
-                super.paint(g);
-                g.drawImage(backgroundImage, 0,1920/6, (int)1080/3, (int) 1920/3, 0, 0, 1080, 960, null);
-            }
-        };*/
         JFrame f = new JFrame();
         f.setSize(1080/3,1920/3);
-        // hide JPanel by calling setVisible(false)
 
         GridLayout experimentLayout = new GridLayout(0,1);
         f.setLayout(experimentLayout);
