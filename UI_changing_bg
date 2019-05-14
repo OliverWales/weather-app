@@ -1,0 +1,63 @@
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+class UI {
+    BufferedImage[] images;
+    ArrayList<Path> files;
+    JPanelWBI[] panels;
+    ArrayList<String> weather;
+    UI() throws Exception{
+        weather = new ArrayList<>();
+        weather.add("broken_cloud");
+        weather.add("cloud");
+        weather.add("mist");
+        weather.add("rain");
+        weather.add("shower");
+        weather.add("snow");
+        weather.add("sun");
+        weather.add("sun_and_cloud");
+        weather.add("thunderstorm");
+
+        JFrame f = new JFrame();
+        f.setSize(1080/3,1920/3);
+        // hide JPanel by calling setVisible(false)
+
+        GridLayout experimentLayout = new GridLayout(0,1);
+        f.setLayout(experimentLayout);
+        images = new BufferedImage[9];
+        files = new ArrayList<>();
+        Files.newDirectoryStream(Paths.get("src/images/Backgrounds"))
+                .forEach(x -> files.add(x));
+        for (int i = 0; i<9; i++){
+            images[i] = ImageIO.read(files.get(i).toFile());
+        }
+        panels = new JPanelWBI[9];
+        for (int i = 0; i<9; i++){
+            panels[i] = new JPanelWBI(images[i],1920/6, 1080/3);
+        }
+        int home = weather.indexOf("rain");
+        int dest = weather.indexOf("thunderstorm");
+        f.add(panels[home]);
+        f.add(panels[dest]);
+        f.setVisible(true);
+        TimeUnit.SECONDS.sleep(1);
+        f.remove(panels[home]);
+        f.remove(panels[dest]);
+        home = weather.indexOf("mist");
+        f.add(panels[home]);
+        f.add(panels[dest]);
+        f.setVisible(true);
+    }
+
+    public static void main(String[] args) throws Exception{
+        UI ui = new UI();
+    }
+
+}
