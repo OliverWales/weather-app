@@ -1,5 +1,7 @@
 /*
  * Credits to:
+ * Blogmeister - AutoCompleteJComboBoxer - http://tech.chitgoks.com/2009/11/06/autocomplete-jcombobox/
+ * Oracle - ComboBoxDemo - https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html
  *
  */
 
@@ -112,11 +114,13 @@ public class App extends JPanel implements ActionListener {
     }
 
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(() -> {
-            try {
-                createAndShowGUI();
-            } catch (IOException e) {
-                e.printStackTrace();
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    createAndShowGUI();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
