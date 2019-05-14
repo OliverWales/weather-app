@@ -1,3 +1,5 @@
+package WeatherApp;
+
 import javax.swing.*;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;

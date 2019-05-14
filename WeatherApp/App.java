@@ -4,6 +4,7 @@
  * Oracle - ComboBoxDemo - https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html
  *
  */
+package WeatherApp;
 
 import com.google.gson.JsonObject;
 
