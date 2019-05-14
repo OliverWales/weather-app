@@ -19,7 +19,7 @@ import java.util.List;
 
 public class App extends JPanel implements ActionListener {
     JLabel temperature, type, description;
-    JsonObject currentLocation;
+    Forecast currentLocation;
 
     public App() throws IOException {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -90,13 +90,13 @@ public class App extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JComboBox cb = (JComboBox)e.getSource();
         String newSelection = (String)cb.getSelectedItem();
-        currentLocation = Weather.getCurrentWeatherObject(newSelection);
+        currentLocation = Weather.getCurrentWeather(newSelection);
         temperature.setForeground(Color.black);
         type.setForeground(Color.black);
         description.setForeground(Color.black);
-        temperature.setText(Double.toString(Weather.getTemp(currentLocation)));
-        type.setText(Weather.getType(currentLocation));
-        description.setText(Weather.getDesc(currentLocation));
+        temperature.setText(Double.toString(currentLocation.getTemp()));
+        type.setText(currentLocation.getType());
+        description.setText(currentLocation.getDesc());
     }
 
     private static void createAndShowGUI() throws IOException {

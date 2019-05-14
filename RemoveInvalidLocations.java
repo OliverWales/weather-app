@@ -13,7 +13,7 @@ public class RemoveInvalidLocations {
                     "/home/archie/Documents/weather-app/citylist.txt"));
             String line = reader.readLine();
             while (line != null) {
-                if (Weather.getCurrentWeatherObject(line) != null) bw.write(line + "\n");
+                if (Weather.getCurrentWeather(line) != null) bw.write(line + "\n");
                 line = reader.readLine();
             }
             reader.close();
