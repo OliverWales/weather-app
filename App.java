@@ -100,7 +100,7 @@ public class App extends JPanel implements ActionListener {
 
     private static void createAndShowGUI() throws IOException {
         //Create and set up the window.
-        JFrame frame = new JFrame("ComboBoxDemo2");
+        JFrame frame = new JFrame("Weather App");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.
@@ -114,13 +114,11 @@ public class App extends JPanel implements ActionListener {
     }
 
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    createAndShowGUI();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            try {
+                createAndShowGUI();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }
