@@ -1,17 +1,3 @@
-'t Hoeksken,BE
-'t Zand,NL
-(Bruxelles-Capitale),BE
-(Pokharithok Bajar),NP
-,AZ
-,RU
-,SY
--,BY
--,CH
--,GE
--,IQ
--,KZ
--,RU
--,UA
 665 Site Colonia,US
 A Cañiza,ES
 A Coruna,ES
