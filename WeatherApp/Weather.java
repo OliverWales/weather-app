@@ -21,6 +21,7 @@ public class Weather {
 
             Gson gson = new Gson();
             JsonObject jsonObject = gson.fromJson(br.readLine(), JsonObject.class);
+            System.out.println(jsonObject);
 
             return new Forecast(jsonObject);
         } catch (Exception e) {
@@ -30,7 +31,7 @@ public class Weather {
         }
     }
 
-    // Get forecast for next few days
+    // Get forecast object for next few days
     public static JsonObject getForecastObject(String location) {
         String url = "http://api.openweathermap.org/data/2.5/forecast?q=" + location + "&appid=" + API_KEY;
 
@@ -49,7 +50,7 @@ public class Weather {
         }
     }
 
-    // get 3 hr forecast for next 24 hrs
+    // get 3 hr forecast list for next 24 hrs
     public static ArrayList<Forecast> getNextDayForecast(JsonObject jsonObject) {
         JsonArray forecastArray = jsonObject.getAsJsonArray("list");
         ArrayList<Forecast> forecasts = new ArrayList<>();
@@ -63,7 +64,7 @@ public class Weather {
         return forecasts;
     }
 
-    // get 3 hr forecast for next 24 hrs
+    // get daily forecast
     public static ArrayList<Forecast> getNextWeekForecast(JsonObject jsonObject) {
         JsonArray forecastArray = jsonObject.getAsJsonArray("list");
         ArrayList<Forecast> forecasts = new ArrayList<>();
@@ -71,7 +72,8 @@ public class Weather {
         for(int i = 0; i < 40; i++) {
             JsonElement jsonElement = forecastArray.get(i);
             Forecast forecast = new Forecast(jsonElement.getAsJsonObject());
-            if(forecast.getDate().getHours() < 13 && forecast.getDate().getHours() >= 10) {
+            if(forecast.getDate().getHours() <= 13 && forecast.getDate().getHours() > 10) {
+                System.out.println(jsonElement.getAsJsonObject());
                 forecasts.add(forecast);
             }
         }

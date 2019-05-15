@@ -11,32 +11,51 @@ class Forecast {
     private String desc;
     private String icon;
     private double temp;
-    private double wind;
+    private double pressure;
+    private double humidity;
+    private double maxTemp;
+    private double minTemp;
+    private double windspeed;
 
     Forecast (JsonObject weatherObject) {
+        JsonObject weather = weatherObject.get("weather").getAsJsonArray().get(0).getAsJsonObject();
+        JsonObject main = weatherObject.get("main").getAsJsonObject();
+
         // Date
-        this.date = new Date((long)weatherObject.get("dt").getAsLong() * 1000);
+        this.date = new Date(weatherObject.get("dt").getAsLong() * 1000);
 
         // Type
-        this.type = weatherObject.get("weather").getAsJsonArray().get(0).getAsJsonObject().get("main").getAsString();
+        this.type = weather.get("main").getAsString();
 
         // Description
-        this.desc = weatherObject.get("weather").getAsJsonArray().get(0).getAsJsonObject().get("description").getAsString();
+        this.desc = weather.get("description").getAsString();
 
         // Icon code
-        this.icon = weatherObject.get("weather").getAsJsonArray().get(0).getAsJsonObject().get("icon").getAsString();
+        this.icon = weather.get("icon").getAsString();
 
         // Avg. temp in deg. C.
-        double temp = weatherObject.get("main").getAsJsonObject().get("temp").getAsDouble() - ZERO_Celcius;
+        double temp = main.get("temp").getAsDouble() - ZERO_Celcius;
         this.temp = Math.round(temp * 10)/10.0;
 
+        // Air pressure
+        this.pressure = main.get("pressure").getAsDouble();
+
+        // Humidity
+        this.humidity = main.get("pressure").getAsDouble();
+
+        // Min Temp
+        this.minTemp = main.get("temp_min").getAsDouble();
+
+        // Max Temp
+        this.maxTemp = main.get("temp_max").getAsDouble();
+
         // Wind speed
-        this.wind = weatherObject.get("wind").getAsJsonObject().get("speed").getAsDouble();
+        this.windspeed = weatherObject.get("wind").getAsJsonObject().get("speed").getAsDouble();
     }
 
     @Override
     public String toString() {
-        String s = date.toString() + " " + type + ", " + temp + "°C";
+        String s = date.toString() + " " + type + " (" + desc + "), " + temp + "°C";
         return s;
     }
 
@@ -60,7 +79,23 @@ class Forecast {
         return temp;
     }
 
-    public double getWind() {
-        return wind;
+    public double getPressure() {
+        return pressure;
+    }
+
+    public double getHumidity() {
+        return humidity;
+    }
+
+    public double getMaxTemp() {
+        return maxTemp;
+    }
+
+    public double getMinTemp() {
+        return minTemp;
+    }
+
+    public double getWindspeed() {
+        return windspeed;
     }
 }
