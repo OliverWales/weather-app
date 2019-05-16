@@ -1,0 +1,25 @@
+import WeatherApp.JPanelWBI;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class layouts {
+    public static void main(String[] args) throws Exception{
+        JPanel screen = new JPanel(new GridLayout(0, 1));
+        
+        JPanel top = new JPanel(new GridLayout(1, 0));
+        // put all the top stuff in 
+        screen.add(top);
+        
+        JPanel forecasts = new JPanel(new GridLayout(0, 1));
+        int maxInADay = 8;
+        JPanel[] panels = new JPanel[maxInADay];
+        for (int i = 0; i<maxInADay; i++){
+            panels[i] = new JPanel(new GridLayout(1,0));
+            // add everything to forecast panel
+            forecasts.add(panels[i]);
+        }
+        
+        screen.add(forecasts);
+    }
+}
