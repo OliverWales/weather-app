@@ -21,7 +21,6 @@ public class Weather {
 
             Gson gson = new Gson();
             JsonObject jsonObject = gson.fromJson(br.readLine(), JsonObject.class);
-            System.out.println(jsonObject);
 
             return new Forecast(jsonObject);
         } catch (Exception e) {
@@ -64,7 +63,7 @@ public class Weather {
         return forecasts;
     }
 
-    // get daily forecast
+    // get daily forecast for next 5 days (uses 1pm forecast)
     public static ArrayList<Forecast> getNextWeekForecast(JsonObject jsonObject) {
         JsonArray forecastArray = jsonObject.getAsJsonArray("list");
         ArrayList<Forecast> forecasts = new ArrayList<>();
@@ -72,8 +71,7 @@ public class Weather {
         for(int i = 0; i < 40; i++) {
             JsonElement jsonElement = forecastArray.get(i);
             Forecast forecast = new Forecast(jsonElement.getAsJsonObject());
-            if(forecast.getDate().getHours() <= 13 && forecast.getDate().getHours() > 10) {
-                System.out.println(jsonElement.getAsJsonObject());
+            if(forecast.getDate().getHours() == 13) {
                 forecasts.add(forecast);
             }
         }
