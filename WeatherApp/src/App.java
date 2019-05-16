@@ -24,7 +24,7 @@ public class App extends JPanel implements ActionListener {
 
     public App() throws IOException {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        locations = Files.readAllLines(Paths.get("/home/archie/Documents/weather-app/history.txt"));
+        locations = Files.readAllLines(Paths.get("WeatherApp/data/history.txt"));
 
         //Set up the UI for selecting a pattern.
         JLabel patternLabel1 = new JLabel("Enter your destination: ");
@@ -98,7 +98,7 @@ public class App extends JPanel implements ActionListener {
 
         if (!locations.contains(newSelection)) {
             try {
-                BufferedWriter writer = new BufferedWriter(new FileWriter("/home/archie/Documents/weather-app/history.txt", true));
+                BufferedWriter writer = new BufferedWriter(new FileWriter("WeatherApp/data/history.txt", true));
                 writer.write(newSelection + '\n');
                 writer.close();
                 locations.add(newSelection);
