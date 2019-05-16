@@ -5,13 +5,16 @@ import com.google.gson.JsonObject;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class HourByHour {
+public class HourByHour implements ActionListener {
     private JFrame frame;
+    private JPanel myPanel;
     private static int Pwidth = 1080 / 3;
     private static int Pheight = 1920 / 3;
     private ArrayList<Forecast> forecast;
@@ -20,48 +23,25 @@ public class HourByHour {
     protected HourByHour create(ArrayList<Forecast> Weather) throws IOException {
         frame = createFrame();
         forecast = Weather;
-        frame.add(createPanel());
-//        frame.getContentPane().add(createHomeContent("snow"));
-//        frame.getContentPane().add(createHolContent("thunder"));
-
+        myPanel = createPanel();
+        frame.add(myPanel);
         return this;
     }
 
     private JFrame createFrame() {
         JFrame frame = new JFrame("Holiday Weather App");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//        frame.setSize(Pwidth,Pheight);
         frame.setPreferredSize(new Dimension(Pwidth, Pheight));
         return frame;
     }
 
     private JPanel createPanel() throws IOException {
-//        JPanel main = new JPanel(new GridLayout(10,1));
-//       // main.setBackground(Color.red);
-//        JLabel current = new JLabel("this would be current weather");
-//        main.add(current);//info on current weather?)// ;
-//
-//        for (Forecast f : forecast){
-////            GridLayout hour = new GridLayout(1,3,0,15);
-//            JLabel icon = new JLabel(new ImageIcon(getIcon(f.getIcon())));
-//            Box hour = Box.createHorizontalBox();
-//            hour.setBackground(requestColour("01d"));
-//            String timeS = String.valueOf(f.getDate().getTime());
-//            JLabel time = new JLabel(timeS);
-//            hour.add(icon);
-//            hour.add(time);
-//            String temp = String.valueOf(f.getTemp());
-//            JLabel tempLabel = new JLabel(temp);
-//            hour.add(tempLabel);
-//            main.add(hour);
-//
-//        }
-        //return main;
         JPanel screen = new JPanel(new BorderLayout());
 
         JPanel top = new JPanel(new GridLayout(1, 0));
         // put all the top stuff in
         JButton back = new JButton("⇦");
+        back.addActionListener(this);
         JLabel location = new JLabel("Cambridge");
         top.setBackground(Color.orange);
         top.add(back);
@@ -76,7 +56,6 @@ public class HourByHour {
 
             panels[i] = new JPanel(new GridLayout(1, 0));
             // add everything to forecast panel
-            System.out.println(f.getIcon());
             JLabel icon = new JLabel(new ImageIcon(getIconImage(f.getIcon())));
             JLabel time = new JLabel(f.getTime());
             String temp = String.valueOf(f.getTemp());
@@ -104,7 +83,6 @@ public class HourByHour {
 
     private void show() {
         frame.pack();
-//        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -157,4 +135,8 @@ public class HourByHour {
         });
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        myPanel.setVisible(false);
+    }
 }
