@@ -33,7 +33,7 @@ class Forecast {
         this.desc = weather.get("description").getAsString();
 
         // Icon code
-        this.icon = weather.get("icon").getAsString();
+        this.icon = weather.get("icon").getAsString().substring(0, 2);
 
         // Avg. temp in deg. C.
         double temp = main.get("temp").getAsDouble() - ZERO_Celcius;
