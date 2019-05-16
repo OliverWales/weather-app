@@ -1,38 +1,36 @@
 /*
  * Credits to:
- * Blogmeister - AutoCompleteJComboBoxer - http://tech.chitgoks.com/2009/11/06/autocomplete-jcombobox/
  * Oracle - ComboBoxDemo - https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html
  *
  */
 package WeatherApp;
 
-import com.google.gson.JsonObject;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
 public class App extends JPanel implements ActionListener {
-    JLabel temperature, type, description;
-    Forecast currentLocation;
+    private JLabel temperature, type, description;
+    private Forecast currentLocation;
+    private List<String> locations;
+    private JComboBox patternList;
 
     public App() throws IOException {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        List<String> locations = Files.readAllLines(Paths.get("/home/archie/Documents/camb/app/citylist.txt"));
+        locations = Files.readAllLines(Paths.get("/home/archie/Documents/weather-app/history.txt"));
 
         //Set up the UI for selecting a pattern.
         JLabel patternLabel1 = new JLabel("Enter your destination: ");
-
-        JComboBox patternList = new JComboBox(locations.toArray());
-
-        //Add auto-complete functionality to ComboBoxer.
-        AutoCompleteJComboBoxer p = new AutoCompleteJComboBoxer(patternList);
+        patternList = new JComboBox(locations.toArray());
         patternList.setEditable(true);
+        patternList.setSelectedIndex(-1);
         patternList.addActionListener(this);
 
         //Create the UI for displaying result.
@@ -97,6 +95,19 @@ public class App extends JPanel implements ActionListener {
         temperature.setText(Double.toString(currentLocation.getTemp()));
         type.setText(currentLocation.getType());
         description.setText(currentLocation.getDesc());
+
+        if (!locations.contains(newSelection)) {
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter("/home/archie/Documents/weather-app/history.txt", true));
+                writer.write(newSelection + '\n');
+                writer.close();
+                locations.add(newSelection);
+                patternList.addItem(newSelection);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+
     }
 
     private static void createAndShowGUI() throws IOException {
