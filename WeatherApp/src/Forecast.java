@@ -1,6 +1,8 @@
 package WeatherApp;
 
 import com.google.gson.JsonObject;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 class Forecast {
@@ -97,5 +99,15 @@ class Forecast {
 
     public double getWindspeed() {
         return windspeed;
+    }
+
+    public String getDay(){
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        return sdf.format(date);
+    }
+
+    public String getTime(){
+        SimpleDateFormat sdf = new SimpleDateFormat("ha");
+        return sdf.format(date);
     }
 }
