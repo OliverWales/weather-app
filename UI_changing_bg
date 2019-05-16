@@ -1,3 +1,5 @@
+package WeatherApp;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -6,6 +8,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.concurrent.TimeUnit;
 
 class UI {
@@ -13,11 +17,15 @@ class UI {
     ArrayList<Path> files;
     JPanelWBI[] panels;
     ArrayList<String> weather;
+    int home;
+    int dest;
+    JFrame f_comp;
     UI() throws Exception{
         weather = new ArrayList<>();
         weather.add("broken_cloud");
         weather.add("cloud");
         weather.add("mist");
+        weather.add("ND");
         weather.add("rain");
         weather.add("shower");
         weather.add("snow");
@@ -25,39 +33,86 @@ class UI {
         weather.add("sun_and_cloud");
         weather.add("thunderstorm");
 
-        JFrame f = new JFrame();
-        f.setSize(1080/3,1920/3);
+        f_comp = new JFrame();
+        f_comp.setSize(1080/3,1920/3);
         // hide JPanel by calling setVisible(false)
 
         GridLayout experimentLayout = new GridLayout(0,1);
-        f.setLayout(experimentLayout);
-        images = new BufferedImage[9];
+        f_comp.setLayout(experimentLayout);
+
+        images = new BufferedImage[10];
         files = new ArrayList<>();
-        Files.newDirectoryStream(Paths.get("src/images/Backgrounds"))
+        Files.newDirectoryStream(Paths.get("src/data/backs"))
                 .forEach(x -> files.add(x));
-        for (int i = 0; i<9; i++){
-            images[i] = ImageIO.read(files.get(i).toFile());
+        Collections.sort(files,
+        new Comparator<Path>() {public int compare(Path f1, Path f2){return f1.toString().compareTo(f2.toString()); }});
+        for (int i = 0; i<10; i++){
+            images[i] = ImageIO.read(files.get(i+1).toFile());
         }
-        panels = new JPanelWBI[9];
-        for (int i = 0; i<9; i++){
+        panels = new JPanelWBI[10];
+        for (int i = 0; i<10; i++){
             panels[i] = new JPanelWBI(images[i],1920/6, 1080/3);
         }
-        int home = weather.indexOf("rain");
-        int dest = weather.indexOf("thunderstorm");
-        f.add(panels[home]);
-        f.add(panels[dest]);
-        f.setVisible(true);
+        /*
+        init("rain");
         TimeUnit.SECONDS.sleep(1);
-        f.remove(panels[home]);
-        f.remove(panels[dest]);
-        home = weather.indexOf("mist");
-        f.add(panels[home]);
-        f.add(panels[dest]);
-        f.setVisible(true);
+        changeDest("thunderstorm");
+        TimeUnit.SECONDS.sleep(1);
+        changeHome("mist");*/
+        //test();
+        for (JPanelWBI x : panels){
+            f_comp.add(x);
+            f_comp.setVisible(true);
+            TimeUnit.SECONDS.sleep(2);
+            f_comp.remove(x);
+        }
     }
 
     public static void main(String[] args) throws Exception{
         UI ui = new UI();
     }
 
+    public void test() throws Exception{
+        init();
+        TimeUnit.SECONDS.sleep(2);
+        changeHome("broken_cloud");
+        changeDest("cloud");
+        TimeUnit.SECONDS.sleep(2);
+        changeHome("mist");
+        changeDest("ND");
+        TimeUnit.SECONDS.sleep(2);
+        changeHome("rain");
+        changeDest("shower");
+        TimeUnit.SECONDS.sleep(2);
+        changeHome("snow");
+        changeDest("sun");
+        TimeUnit.SECONDS.sleep(2);
+        changeHome("sun_and_cloud");
+        changeDest("thunderstorm");
+    }
+
+    public void init(){
+        home = weather.indexOf("ND");
+        dest = weather.indexOf("ND");
+        f_comp.add(panels[home]);
+        f_comp.add(panels[dest]);
+        f_comp.setVisible(true);
+    }
+
+    public void changeHome(String n){
+        f_comp.remove(panels[home]);
+        f_comp.remove(panels[dest]);
+        home = weather.indexOf(n);
+        f_comp.add(panels[home]);
+        f_comp.add(panels[dest]);
+        f_comp.setVisible(true);
+    }
+    public void changeDest(String n){
+        f_comp.remove(panels[home]);
+        f_comp.remove(panels[dest]);
+        dest = weather.indexOf(n);
+        f_comp.add(panels[home]);
+        f_comp.add(panels[dest]);
+        f_comp.setVisible(true);
+    }
 }
