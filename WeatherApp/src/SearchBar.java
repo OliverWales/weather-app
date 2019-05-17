@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class SearchBar extends JComboBox implements ActionListener {
-    static final String history = "history.txt";
+    static final String history = "../data/history.txt";
     private List<String> locations;
     private String selectedLocation;
 
@@ -19,6 +19,7 @@ public class SearchBar extends JComboBox implements ActionListener {
         super((Files.readAllLines(Paths.get(history))).toArray());
         locations = Files.readAllLines(Paths.get(history));
         selectedLocation = null;
+        AutoCompletion.enable(this);
         this.setEditable(true);
         this.setSelectedIndex(-1);
         this.addActionListener(this);
