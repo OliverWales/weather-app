@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed74ee51-a7bb-489a-b622-646272815bf4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_6_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/weather-app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/CitySearchBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/CitySearchBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/HistorySearchBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/HistorySearchBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/ComboBoxDemo2$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/ComboBoxDemo2.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,11 +18,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/WeatherApp/ComboBoxDemo2.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Demos/SearchBarDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-419">
-              <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+            <state relative-caret-position="609">
+              <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -50,7 +48,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WeatherApp/HourByHour.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="435">
@@ -61,6 +59,14 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>pattern</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>location</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -70,6 +76,9 @@
         <option value="$PROJECT_DIR$/src/WeatherApp/HistorySearchBar.java" />
         <option value="$PROJECT_DIR$/src/WeatherApp/CitySearchBar.java" />
         <option value="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" />
+        <option value="$PROJECT_DIR$/src/WeatherApp/ComboBoxDemo2.java" />
+        <option value="$PROJECT_DIR$/src/WeatherApp/SearchBarDemo.java" />
+        <option value="$PROJECT_DIR$/src/Demos/SearchBarDemo.java" />
       </list>
     </option>
   </component>
@@ -133,12 +142,12 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="ComboBoxDemo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="WeatherApp.ComboBoxDemo2" />
+    <configuration name="SearchBarDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Demos.SearchBarDemo" />
       <module name="weather-app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="WeatherApp.*" />
+          <option name="PATTERN" value="Demos.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -148,7 +157,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ComboBoxDemo2" />
+        <item itemvalue="Application.SearchBarDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -174,7 +183,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
@@ -182,7 +191,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.32980832" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32980832" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32980832" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -198,13 +207,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/WeatherApp/ComboBoxDemo2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-419">
-          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/WeatherApp/HistorySearchBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
@@ -223,6 +225,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="79" column="84" selection-start-line="79" selection-start-column="84" selection-end-line="79" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Demos/SearchBarDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
