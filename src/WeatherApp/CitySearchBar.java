@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class CitySearchBar extends JComboBox implements ActionListener {
-    static final String cities = "../data/citylist.txt";
+    static final String cities = "/home/archie/Documents/weather-app/data/citylist.txt";
     private List<String> locations;
     private String selectedLocation;
 

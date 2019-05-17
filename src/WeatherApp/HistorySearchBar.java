@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class HistorySearchBar extends JComboBox implements ActionListener {
-    static final String history = "../data/history.txt";
+    static final String history = "/home/archie/Documents/weather-app/data/history.txt";
     private List<String> locations;
     private String selectedLocation;
 
