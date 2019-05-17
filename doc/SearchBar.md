@@ -1,5 +1,6 @@
-#SearchBar
+# SearchBar
 The SearchBar classes (`HistorySearchBar` and `CitySearchBar`) inherit from `JComboBox`.  
+    
 They set various settings and add appropriate strings to their drop down menus:  
-`HistorySearchBar`: previous searches, updated with new searches (stored in `history.txt`)  
-`CitySearchBar`: all cities (stored in `citylist.txt`)
+* `HistorySearchBar`: previous searches, updated with new searches (stored in `history.txt`)  
+* `CitySearchBar`: all cities (stored in `citylist.txt`)
