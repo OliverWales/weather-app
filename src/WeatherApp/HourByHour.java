@@ -123,14 +123,11 @@ public class HourByHour implements ActionListener {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    new HourByHour().create(Weather.getNextDayForecast(Weather.getForecastObject("Cambridge"))).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        SwingUtilities.invokeLater(() -> {
+            try {
+                new HourByHour().create(Weather.getNextDayForecast(Weather.getForecastObject("Cambridge"))).show();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }
