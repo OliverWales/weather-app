@@ -19,7 +19,6 @@ public class HistorySearchBar extends JComboBox implements ActionListener {
         super((Files.readAllLines(Paths.get(history))).toArray());
         locations = Files.readAllLines(Paths.get(history));
         selectedLocation = null;
-        AutoCompletion.enable(this);
         this.setEditable(true);
         this.setSelectedIndex(-1);
         this.addActionListener(this);
