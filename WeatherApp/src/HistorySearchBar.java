@@ -10,12 +10,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class SearchBar extends JComboBox implements ActionListener {
+public class HistorySearchBar extends JComboBox implements ActionListener {
     static final String history = "../data/history.txt";
     private List<String> locations;
     private String selectedLocation;
 
-    public SearchBar() throws IOException {
+    public HistorySearchBar() throws IOException {
         super((Files.readAllLines(Paths.get(history))).toArray());
         locations = Files.readAllLines(Paths.get(history));
         selectedLocation = null;
@@ -43,4 +43,5 @@ public class SearchBar extends JComboBox implements ActionListener {
     public String getSelected() {
         return selectedLocation;
     }
+
 }
