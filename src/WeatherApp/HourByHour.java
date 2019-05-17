@@ -77,7 +77,7 @@ public class HourByHour implements ActionListener {
 
     private BufferedImage getIconImage(String weather) throws IOException {
         BufferedImage icon = null;
-        icon = ImageIO.read(new File("src/data/icons/" + weather + "d.png"));
+        icon = ImageIO.read(new File("../data/icons/" + weather + "d.png"));
         return icon;
     }
 
