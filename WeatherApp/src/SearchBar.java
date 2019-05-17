@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class SearchBar extends JComboBox implements ActionListener {
-    static final String history = "/home/archie/Documents/weather-app/WeatherApp/data/history.txt";
+    static final String history = "history.txt";
     private List<String> locations;
     private String selectedLocation;
 
@@ -34,7 +34,7 @@ public class SearchBar extends JComboBox implements ActionListener {
                 locations.add(selectedLocation);
                 this.addItem(selectedLocation);
             } catch (IOException ex) {
-                System.out.println("[!] Can't find history file: WeatherApp/data/history.txt");
+                System.out.println("[!] Can't find history file: " + history);
             }
         }
     }
