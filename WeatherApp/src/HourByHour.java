@@ -19,39 +19,46 @@ public class HourByHour implements ActionListener {
     private static int Pheight = 1920 / 3;
     private ArrayList<Forecast> forecast;
 
-
+    //    creates the instance of the frame and everything that needs to go in the frame,
+//    takes ArrayList<Forecast> as input, which should be generated using Weather.getNextDayForecast(getForecastObject(*location*);
     protected HourByHour create(ArrayList<Forecast> Weather) throws IOException {
         frame = createFrame();
         forecast = Weather;
         myPanel = createPanel();
         frame.add(myPanel);
+        show();
         return this;
     }
 
     private JFrame createFrame() {
-        JFrame frame = new JFrame("Holiday Weather App");
+        JFrame frame = new JFrame("Every 3 Hours Overview");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(Pwidth, Pheight));
         return frame;
     }
 
     private JPanel createPanel() throws IOException {
+//        panel for the whole screen
         JPanel screen = new JPanel(new BorderLayout());
 
+//        panel for the top information
         JPanel top = new JPanel(new GridLayout(1, 0));
-        // put all the top stuff in
+        // back button to make panel disappear so to return to home page
         JButton back = new JButton("⇦");
         back.addActionListener(this);
-        JLabel location = new JLabel("Cambridge");
+        // diaplays current location at top of screen
+        JLabel location = new JLabel("Cambridge"); //TODO: replace with current location? from get method in main class?
         top.setBackground(Color.orange);
         top.add(back);
         top.add(location);
         screen.add(top, BorderLayout.NORTH);
 
+//        new panel for all the forecasts to be displayed in
         JPanel forecasts = new JPanel(new GridLayout(0, 1));
         int maxInADay = 8;
         JPanel[] panels = new JPanel[maxInADay];
         int i = 0;
+//        cycles through forcast objects from input and creates a new panel for each hour summary
         for (Forecast f : forecast) {
 
             panels[i] = new JPanel(new GridLayout(1, 0));
@@ -75,6 +82,7 @@ public class HourByHour implements ActionListener {
         return screen;
     }
 
+    //  method for getting the necessary icon image
     private BufferedImage getIconImage(String weather) throws IOException {
         BufferedImage icon = null;
         icon = ImageIO.read(new File("src/data/icons/" + weather + "d.png"));
@@ -86,6 +94,7 @@ public class HourByHour implements ActionListener {
         frame.setVisible(true);
     }
 
+    //    finds colour to be used as background
     private Color requestColour(String weather) {
         Color col = null;
 
@@ -122,12 +131,19 @@ public class HourByHour implements ActionListener {
         return col;
     }
 
+    // functionality for the button
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        myPanel.setVisible(false);
+    }
+
+    //    example main method to make it run on its own
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 try {
-                    new HourByHour().create(Weather.getNextDayForecast(Weather.getForecastObject("Cambridge"))).show();
+                    new HourByHour().create(Weather.getNextDayForecast(Weather.getForecastObject("Cambridge")));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -135,8 +151,5 @@ public class HourByHour implements ActionListener {
         });
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        myPanel.setVisible(false);
-    }
+
 }
