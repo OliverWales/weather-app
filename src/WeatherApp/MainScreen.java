@@ -156,6 +156,7 @@ class MainScreen {
         fHome = new JFrame();
         fHome.setSize(pWidth,pHeight);
         fHome.setLayout(new GridLayout(2,1));
+        fHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // add keyboard listener for screen change
         fHome.addKeyListener(new KeyListener() {

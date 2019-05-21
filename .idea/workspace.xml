@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ed74ee51-a7bb-489a-b622-646272815bf4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/CitySearchBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/CitySearchBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/DayByDay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/DayByDay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/HistorySearchBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/HistorySearchBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/HourByHour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/HourByHour.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/CitySearchBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/CitySearchBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/DayByDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/DayByDay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/HistorySearchBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/HistorySearchBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/SJLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/SJLabel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,24 +15,16 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/WeatherApp/SJLabel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="308" column="45" selection-start-line="308" selection-start-column="45" selection-end-line="308" selection-end-column="45" />
+            <state relative-caret-position="678">
+              <caret line="158" column="13" lean-forward="true" selection-start-line="158" selection-start-column="13" selection-end-line="158" selection-end-column="13" />
+              <folding>
+                <element signature="e#4559#4560#0" expanded="true" />
+                <element signature="e#4597#4598#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,8 +81,8 @@
         <option value="$PROJECT_DIR$/src/WeatherApp/CitySearchBar.java" />
         <option value="$PROJECT_DIR$/src/WeatherApp/HistorySearchBar.java" />
         <option value="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" />
-        <option value="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" />
         <option value="$PROJECT_DIR$/src/WeatherApp/SJLabel.java" />
+        <option value="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" />
       </list>
     </option>
   </component>
@@ -275,7 +257,7 @@
     <frame x="-2" y="0" width="3204" height="1760" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27574003" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27960104" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -284,7 +266,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32980832" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28486452" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28486452" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -335,13 +317,7 @@
     <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="file://$PROJECT_DIR$/doc/DesignDeviations.md" />
     <entry file="file://$PROJECT_DIR$/doc/SearchBar.md" />
-    <entry file="file://$PROJECT_DIR$/WeatherApp/src/MainScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1881">
-          <caret line="178" column="26" selection-start-line="178" selection-start-column="16" selection-end-line="178" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/WeatherApp/src/MainScreen.java" />
     <entry file="file://$PROJECT_DIR$/data/history.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
@@ -441,19 +417,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="308" column="45" selection-start-line="308" selection-start-column="45" selection-end-line="308" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/WeatherApp/SJLabel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
           <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="678">
+          <caret line="158" column="13" lean-forward="true" selection-start-line="158" selection-start-column="13" selection-end-line="158" selection-end-column="13" />
+          <folding>
+            <element signature="e#4559#4560#0" expanded="true" />
+            <element signature="e#4597#4598#0" expanded="true" />
           </folding>
         </state>
       </provider>
