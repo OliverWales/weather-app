@@ -74,7 +74,6 @@ class MainScreen {
                 }
             }
         });
-        //AutoCompletion.enable(homeBox);
 
         destBox = new JComboBox(locations.toArray());
         destBox.setEditable(true);
@@ -89,7 +88,6 @@ class MainScreen {
                 }
             }
         });
-        //AutoCompletion.enable(destBox);
 
         // initialises weather array & panels
         initWeather();
