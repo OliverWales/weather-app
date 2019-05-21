@@ -61,7 +61,7 @@ class MainScreen {
 
     /**  DONE COMMENTING **/
     public static void main(String[] args) throws Exception{
-        MainScreen ui = new MainScreen("ND", "ND");
+        MainScreen ui = new MainScreen("Cambridge,UK", "Oxford,UK");
         ui.initHome();
     }
 
@@ -69,16 +69,16 @@ class MainScreen {
     public void initWeather(){
         // initialises weather types array
         weather = new ArrayList<>();
-        weather.add("01d");
-        weather.add("02d");
-        weather.add("03d");
         weather.add("04d");
-        weather.add("09d");
-        weather.add("10d");
-        weather.add("11d");
-        weather.add("13d");
+        weather.add("03d");
         weather.add("50d");
         weather.add("ND");
+        weather.add("08d");
+        weather.add("10d");
+        weather.add("13d");
+        weather.add("01d");
+        weather.add("02d");
+        weather.add("11d");
     }
 
     /**  DONE COMMENTING **/
@@ -126,15 +126,17 @@ class MainScreen {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
+                //System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
                 switch (e.getKeyCode()) {
                     case 38:
+                        switchToHourFromDest();
                         // up
                         break;
                     case 40:
                         // down
                         break;
                     case 37:
+                        switchToHourFromHome();
                         // left
                         break;
                     case 39:
@@ -177,15 +179,32 @@ class MainScreen {
         fHome.setVisible(true);
     }
 
-    public void switchToHourFromHome() throws Exception{
-        fHome.setVisible(false);
-        HourByHour hourF = new HourByHour();
-        hourF.create(home);
+    public void switchToHourFromHome() {
+        try{
+            if (!home.equals("ND")){
+                fHome.setVisible(false);
+                HourByHour hourF = new HourByHour();
+                hourF.create(home);
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
-    public void switchToHourFromDest() throws Exception{
-        fHome.setVisible(false);
-        HourByHour hourF = new HourByHour();
-        hourF.create(dest);
+    public void switchToHourFromDest() {
+        try{
+            if(!dest.equals("ND")){
+                fHome.setVisible(false);
+                HourByHour hourF = new HourByHour();
+                hourF.create(dest);
+            }
+        }
+
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void changeHomePanel(String newHomeWeather) throws IOException{
@@ -222,53 +241,29 @@ class MainScreen {
         changeDestPanel(dWeatherCode);
     }
 
-    private void setUpHomePanel(JPanelWBI panel) throws IOException {
+    private void setUpHomePanel(JPanelWBI panel) throws IOException{
+
         panel.setLayout(new BorderLayout());
-
-        JPanel searchBar = new JPanel();
-        searchBar.add(new HistorySearchBar());
-        searchBar.setOpaque(false);
-        panel.add(searchBar, BorderLayout.NORTH);
-
-        JPanel centre = new JPanel();
+        JLabel location = new JLabel(home);
         BufferedImage icon = getIcon(getHomeWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
-        SJLabel temp = new SJLabel(homeForecast.getTemp() + "°C");
-        centre.add(image, BorderLayout.CENTER);
-        centre.add(temp, BorderLayout.SOUTH);
-        centre.setOpaque(false);
-        panel.add(centre, BorderLayout.CENTER);
-
-        JPanel cityName = new JPanel();
-        JLabel location = new JLabel(home);
-        cityName.add(location);
-        cityName.setOpaque(false);
-        panel.add(cityName, BorderLayout.SOUTH);
+        JLabel temp = new JLabel(homeForecast.getTemp() + "°C");
+        panel.add(location, BorderLayout.NORTH);
+        panel.add(image, BorderLayout.CENTER);
+        panel.add(temp, BorderLayout.SOUTH);
 
     }
 
     private void setUpDestPanel(JPanelWBI panel) throws IOException{
         panel.setLayout(new BorderLayout());
-
-        JPanel searchBar = new JPanel();
-        searchBar.add(new HistorySearchBar());
-        searchBar.setOpaque(false);
-        panel.add(searchBar, BorderLayout.NORTH);
-
-        JPanel centre = new JPanel();
-        BufferedImage icon = getIcon(getHomeWeatherCode());
-        JLabel image = new JLabel(new ImageIcon(icon));
-        SJLabel temp = new SJLabel(homeForecast.getTemp() + "°C");
-        centre.add(image, BorderLayout.CENTER);
-        centre.add(temp, BorderLayout.SOUTH);
-        centre.setOpaque(false);
-        panel.add(centre, BorderLayout.CENTER);
-
-        JPanel cityName = new JPanel();
         JLabel location = new JLabel(dest);
-        cityName.add(location);
-        cityName.setOpaque(false);
-        panel.add(cityName, BorderLayout.SOUTH);
+        BufferedImage icon = getIcon(getDestWeatherCode());
+        JLabel image = new JLabel(new ImageIcon(icon));
+        JLabel temp = new JLabel(destForecast.getTemp() + "°C");
+        panel.add(location, BorderLayout.NORTH);
+        panel.add(image, BorderLayout.CENTER);
+        panel.add(temp, BorderLayout.SOUTH);
+
     }
 
     private BufferedImage getIcon(String weather) throws IOException {
