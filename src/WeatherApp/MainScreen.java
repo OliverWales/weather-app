@@ -8,9 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -172,12 +170,22 @@ class MainScreen {
                 switch (e.getKeyCode()) {
                     case 38:
                         // up
+                        try {
+                            switchToHourFromDest();
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                         break;
                     case 40:
                         // down
                         break;
                     case 37:
                         // left
+                        try {
+                            switchToHourFromHome();
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                         break;
                     case 39:
                         // right
