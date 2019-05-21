@@ -45,7 +45,7 @@ class MainScreen {
     private int pHeight = 1920/3;
     private int pWidth = 1080/3;
 
-    static final String cities = "/home/archie/Documents/weather-app/data/citylistFixed.txt"; // file containing previous searches
+    static final String cities = "data/citylistFixed.txt"; // file containing previous searches
     private List<String> locations; // previous searches loaded into a List
     JComboBox homeBox, destBox;
 
@@ -273,7 +273,6 @@ class MainScreen {
         BufferedImage icon = getIcon(getHomeWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
         SJLabel temp = new SJLabel(homeForecast.getTemp() + "°C");
-        temp.setFont(new Font("Serif", Font.BOLD, 32));
         temp.setForeground(Color.white);
         centre.add(image, BorderLayout.CENTER);
         centre.add(temp, BorderLayout.SOUTH);
@@ -281,8 +280,7 @@ class MainScreen {
         panel.add(centre, BorderLayout.CENTER);
 
         JPanel cityName = new JPanel();
-        JLabel location = new JLabel(home);
-        location.setFont(new Font("Serif", Font.BOLD, 32));
+        SJLabel location = new SJLabel(home);
         location.setForeground(Color.white);
         cityName.add(location);
         cityName.setOpaque(false);
@@ -301,7 +299,6 @@ class MainScreen {
         BufferedImage icon = getIcon(getHomeWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
         SJLabel temp = new SJLabel(homeForecast.getTemp() + "°C");
-        temp.setFont(new Font("Serif", Font.BOLD, 32));
         temp.setForeground(Color.white);
         centre.add(image, BorderLayout.CENTER);
         centre.add(temp, BorderLayout.SOUTH);
@@ -309,8 +306,7 @@ class MainScreen {
         panel.add(centre, BorderLayout.CENTER);
 
         JPanel cityName = new JPanel();
-        JLabel location = new JLabel(dest);
-        location.setFont(new Font("Serif", Font.BOLD, 32));
+        SJLabel location = new SJLabel(dest);
         location.setForeground(Color.white);
         cityName.add(location);
         cityName.setOpaque(false);

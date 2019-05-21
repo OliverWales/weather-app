@@ -146,7 +146,7 @@ public class DayByDay implements ActionListener {
     //returns the unique icon based on weather code
     private BufferedImage getIcon(String weather) throws IOException {
         BufferedImage icon = null;
-        icon = ImageIO.read(new File("src/data/icons/" + weather + ".png"));
+        icon = ImageIO.read(new File("data/icons/" + weather + ".png"));
         return icon;
     }
 

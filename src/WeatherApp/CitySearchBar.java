@@ -14,7 +14,7 @@ import java.util.List;
 // The drop down list contains a list of locations stored in citylist.txt
 // The user's search is autocompleted to prevent typing in entire name.
 public class CitySearchBar extends JComboBox implements ActionListener {
-    static final String cities = "/home/archie/Documents/weather-app/data/citylist.txt"; // file containing cities
+    static final String cities = "data/citylist.txt"; // file containing cities
     private List<String> locations; // city file read into a List
     private String selectedLocation; // currently selected city
 
