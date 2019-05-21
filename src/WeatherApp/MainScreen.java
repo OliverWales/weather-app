@@ -223,7 +223,7 @@ class MainScreen {
     }
 
     public void changeHomePanel(String newHomeWeather) throws IOException{
-        fHome.removeAll();
+        fHome.removeAll(); // BUG
         homeWeather = weather.indexOf(newHomeWeather);
         JPanelWBI homeP = new JPanelWBI(panels[homeWeather]);
         JPanelWBI destP = new JPanelWBI(panels[destWeather]);
@@ -234,7 +234,7 @@ class MainScreen {
     }
 
     public void changeDestPanel(String newDestWeather) throws IOException{
-        fHome.removeAll();
+        fHome.removeAll(); // BUG
         destWeather = weather.indexOf(newDestWeather);
         JPanelWBI homeP = new JPanelWBI(panels[homeWeather]);
         JPanelWBI destP = new JPanelWBI(panels[destWeather]);
