@@ -69,16 +69,16 @@ class MainScreen {
     public void initWeather(){
         // initialises weather types array
         weather = new ArrayList<>();
-        weather.add("04d");
-        weather.add("03d");
-        weather.add("50d");
-        weather.add("ND");
-        weather.add("08d");
-        weather.add("10d");
-        weather.add("13d");
         weather.add("01d");
         weather.add("02d");
+        weather.add("03d");
+        weather.add("04d");
+        weather.add("09d");
+        weather.add("10d");
         weather.add("11d");
+        weather.add("13d");
+        weather.add("50d");
+        weather.add("ND");
     }
 
     /**  DONE COMMENTING **/
