@@ -189,7 +189,7 @@ public class DayByDay implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         frame.setVisible(false);
-        UI.reInit();
+        MainScreen.reInit();
     }
 
 

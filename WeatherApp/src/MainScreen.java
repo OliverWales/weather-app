@@ -3,6 +3,8 @@ package WeatherApp;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -32,6 +34,8 @@ class MainScreen {
 
     // frames for each screen
     static JFrame fHome;
+    JFrame fDay;
+    JFrame fWeek;
 
     // size of phone screen
     private int pHeight = 1920/3;
@@ -51,14 +55,13 @@ class MainScreen {
         // initialises day frame
 
 
-
         // initialises week frame
 
     }
 
     /**  DONE COMMENTING **/
     public static void main(String[] args) throws Exception{
-        MainScreen ui = new MainScreen("Cambridge, UK", "Oxford, UK");
+        MainScreen ui = new MainScreen("ND", "ND");
         ui.initHome();
     }
 
@@ -115,6 +118,39 @@ class MainScreen {
         fHome.setSize(pWidth,pHeight);
         fHome.setLayout(new GridLayout(2,1));
 
+        // add keyboard listener for screen change
+        fHome.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
+                switch (e.getKeyCode()) {
+                    case 38:
+                        // up
+                        break;
+                    case 40:
+                        // down
+                        break;
+                    case 37:
+                        // left
+                        break;
+                    case 39:
+                        // right
+                        break;
+                    default:
+                        // other
+                        break;
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+
         // gets weather codes and gets forecasts
         String hWeatherCode = getHomeWeatherCode();
         String dWeatherCode = getDestWeatherCode();
@@ -135,7 +171,7 @@ class MainScreen {
             setUpDestPanel(destP);
         }
 
-        // adds panels to home screen
+        //
         fHome.add(homeP);
         fHome.add(destP);
         fHome.setVisible(true);
@@ -172,6 +208,18 @@ class MainScreen {
         fHome.add(homeP);
         fHome.add(destP);
         fHome.setVisible(true);
+    }
+
+    public void changeHomeLocation(String newHomeLoc) throws IOException{
+        home = newHomeLoc;
+        String hWeatherCode = getHomeWeatherCode();
+        changeHomePanel(hWeatherCode);
+    }
+
+    public void changeDestLocation(String newDestLoc) throws IOException{
+        dest = newDestLoc;
+        String dWeatherCode = getDestWeatherCode();
+        changeDestPanel(dWeatherCode);
     }
 
     private void setUpHomePanel(JPanelWBI panel) throws IOException{
