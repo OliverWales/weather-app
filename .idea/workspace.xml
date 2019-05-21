@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ed74ee51-a7bb-489a-b622-646272815bf4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/data/history.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/history.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" afterDir="false" />
-    </list>
+    <list default="true" id="ed74ee51-a7bb-489a-b622-646272815bf4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
