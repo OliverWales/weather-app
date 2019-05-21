@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed74ee51-a7bb-489a-b622-646272815bf4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,16 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="301" lean-forward="true" selection-start-line="301" selection-end-line="301" />
-              <folding>
-                <element signature="e#4559#4560#0" expanded="true" />
-                <element signature="e#4597#4598#0" expanded="true" />
-                <element signature="e#10611#10612#0" expanded="true" />
-                <element signature="e#10662#10663#0" expanded="true" />
-                <element signature="e#10704#10705#0" expanded="true" />
-                <element signature="e#10755#10756#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="849">
+              <caret line="363" selection-start-line="363" selection-end-line="363" />
             </state>
           </provider>
         </entry>
@@ -434,16 +425,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="301" lean-forward="true" selection-start-line="301" selection-end-line="301" />
-          <folding>
-            <element signature="e#4559#4560#0" expanded="true" />
-            <element signature="e#4597#4598#0" expanded="true" />
-            <element signature="e#10611#10612#0" expanded="true" />
-            <element signature="e#10662#10663#0" expanded="true" />
-            <element signature="e#10704#10705#0" expanded="true" />
-            <element signature="e#10755#10756#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="849">
+          <caret line="363" selection-start-line="363" selection-end-line="363" />
         </state>
       </provider>
     </entry>
