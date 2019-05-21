@@ -20,11 +20,12 @@ public class HourByHour implements ActionListener {
     private ArrayList<Forecast> forecast;
 
     //    creates the instance of the frame and everything that needs to go in the frame,
-//    takes ArrayList<Forecast> as input, which should be generated using Weather.getNextDayForecast(getForecastObject(*location*);
-    protected HourByHour create(ArrayList<Forecast> Weather) throws IOException {
+//    takes a location as input and generates the weather forecast
+    public HourByHour create(String location) throws IOException {
+        JsonObject locationForecast = Weather.getForecastObject(location);
         frame = createFrame();
-        forecast = Weather;
-        myPanel = createPanel();
+        forecast = Weather.getNextWeekForecast(locationForecast);
+        myPanel = createPanel(location);
         frame.add(myPanel);
         show();
         return this;
@@ -37,9 +38,10 @@ public class HourByHour implements ActionListener {
         return frame;
     }
 
-    private JPanel createPanel() throws IOException {
+    private JPanel createPanel(String loc) throws IOException {
 //        panel for the whole screen
         JPanel screen = new JPanel(new BorderLayout());
+
 //        panel for the top information
         JPanel top = new JPanel(new GridLayout(1, 0));
         // back button to make panel disappear so to return to home page
@@ -47,7 +49,7 @@ public class HourByHour implements ActionListener {
         back.addActionListener(this);
         back.setPreferredSize(new Dimension(10,30));
         // diaplays current location at top of screen
-        JLabel location = new JLabel("CAMBRIDGE"); //TODO: replace with current location? from get method in main class?
+        JLabel location = new JLabel(loc);
         top.setBackground(Color.orange);
         top.add(back);
         top.add(location);
@@ -85,7 +87,7 @@ public class HourByHour implements ActionListener {
     //  method for getting the necessary icon image
     private BufferedImage getIconImage(String weather) throws IOException {
         BufferedImage icon = null;
-        icon = ImageIO.read(new File("/home/archie/Documents/weather-app/data/icons/" + weather + "d.png"));
+        icon = ImageIO.read(new File("src/data/icons/" + weather + "d.png"));
         return icon;
     }
 
@@ -143,7 +145,7 @@ public class HourByHour implements ActionListener {
             @Override
             public void run() {
                 try {
-                    new HourByHour().create(Weather.getNextDayForecast(Weather.getForecastObject("Cambridge")));
+                    new HourByHour().create("Cambridge");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
