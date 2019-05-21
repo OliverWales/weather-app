@@ -16,6 +16,12 @@ import java.util.Collections;
 import java.util.Comparator;
 
 class MainScreen {
+    // List of locations
+    String[] locations = {"Cambridge,UK", "Oxford,UK", "London,UK"};
+
+    // ComboBoxes
+    JComboBox homeBox, destBox;
+
     // Holds home and destination forecasts
     private Forecast homeForecast;
     private Forecast destForecast;
@@ -45,6 +51,25 @@ class MainScreen {
     MainScreen(String h, String d) throws Exception{
         home = h;
         dest = d;
+
+        JComboBox homeBox = new JComboBox(locations);
+        homeBox.setSelectedIndex(-1);
+        homeBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                changeHomeLocation(homeBox.getSelectedItem());
+            }
+        });
+
+        JComboBox destBox = new JComboBox(locations);
+        destBox.setSelectedIndex(-1);
+        destBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                changeDestLocation(destBox.getSelectedItem());
+            }
+        });
+
         // initialises weather array & panels
         initWeather();
         initBackgroundPanels();
@@ -242,27 +267,52 @@ class MainScreen {
     }
 
     private void setUpHomePanel(JPanelWBI panel) throws IOException{
-
         panel.setLayout(new BorderLayout());
-        JLabel location = new JLabel(home);
+
+        JPanel searchBar = new JPanel();
+        searchBar.add(homeBox);
+        searchBar.setOpaque(false);
+        panel.add(searchBar, BorderLayout.NORTH);
+
+        JPanel centre = new JPanel();
         BufferedImage icon = getIcon(getHomeWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
-        JLabel temp = new JLabel(homeForecast.getTemp() + "°C");
-        panel.add(location, BorderLayout.NORTH);
-        panel.add(image, BorderLayout.CENTER);
-        panel.add(temp, BorderLayout.SOUTH);
+        SJLabel temp = new SJLabel(homeForecast.getTemp() + "°C");
+        centre.add(image, BorderLayout.CENTER);
+        centre.add(temp, BorderLayout.SOUTH);
+        centre.setOpaque(false);
+        panel.add(centre, BorderLayout.CENTER);
+
+        JPanel cityName = new JPanel();
+        JLabel location = new JLabel(home);
+        cityName.add(location);
+        cityName.setOpaque(false);
+        panel.add(cityName, BorderLayout.SOUTH);
 
     }
 
     private void setUpDestPanel(JPanelWBI panel) throws IOException{
         panel.setLayout(new BorderLayout());
-        JLabel location = new JLabel(dest);
-        BufferedImage icon = getIcon(getDestWeatherCode());
+
+        JPanel searchBar = new JPanel();
+        searchBar.add(destBox);
+        searchBar.setOpaque(false);
+        panel.add(searchBar, BorderLayout.NORTH);
+
+        JPanel centre = new JPanel();
+        BufferedImage icon = getIcon(getHomeWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
-        JLabel temp = new JLabel(destForecast.getTemp() + "°C");
-        panel.add(location, BorderLayout.NORTH);
-        panel.add(image, BorderLayout.CENTER);
-        panel.add(temp, BorderLayout.SOUTH);
+        SJLabel temp = new SJLabel(homeForecast.getTemp() + "°C");
+        centre.add(image, BorderLayout.CENTER);
+        centre.add(temp, BorderLayout.SOUTH);
+        centre.setOpaque(false);
+        panel.add(centre, BorderLayout.CENTER);
+
+        JPanel cityName = new JPanel();
+        JLabel location = new JLabel(dest);
+        cityName.add(location);
+        cityName.setOpaque(false);
+        panel.add(cityName, BorderLayout.SOUTH);
 
     }
 
