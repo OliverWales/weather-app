@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,12 +32,16 @@ class MainScreen {
     String home;
     String dest;
 
+    private static final String HBH_DEST = "HBH_DEST";
+    private static final String HBH_HOME = "HBH_HOME";
+
     // indices of current weather codes
     int homeWeather;
     int destWeather;
 
     // frames for each screen
     static JFrame fHome;
+    JPanel screen;
     JPanelWBI homeP, destP;
 
     // size of phone screen
@@ -102,6 +107,7 @@ class MainScreen {
     /**  DONE COMMENTING **/
     public static void main(String[] args) throws Exception{
         MainScreen ui = new MainScreen("Cambridge,UK", "Oxford,UK");
+        fHome.hasFocus();
     }
 
     /**  DONE COMMENTING **/
@@ -154,52 +160,14 @@ class MainScreen {
     public void initHome() throws IOException{
         // creates home frame & sets size to size of phone
         fHome = new JFrame();
+        screen = new JPanel();
         fHome.setSize(pWidth,pHeight);
-        fHome.setLayout(new GridLayout(2,1));
+        screen.setSize(pWidth,pHeight);
+        screen.setLayout(new GridLayout(2,1));
         fHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // add keyboard listener for screen change
-        fHome.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
 
-            @Override
-            public void keyPressed(KeyEvent e) {
-                System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
-                switch (e.getKeyCode()) {
-                    case 38:
-                        // up
-                        try {
-                            switchToHourFromDest();
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
-                        break;
-                    case 40:
-                        // down
-                        break;
-                    case 37:
-                        // left
-                        try {
-                            switchToHourFromHome();
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
-                        break;
-                    case 39:
-                        // right
-                        break;
-                    default:
-                        // other
-                        break;
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }
-        });
 
         // gets weather codes and gets forecasts
         String hWeatherCode = getHomeWeatherCode();
@@ -222,8 +190,18 @@ class MainScreen {
         }
 
         //
-        fHome.add(homeP);
-        fHome.add(destP);
+
+        screen.add(homeP);
+        screen.add(destP);
+
+        //sets up key bindings
+        screen.getInputMap().put(KeyStroke.getKeyStroke("UP"), HBH_DEST);
+        screen.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), HBH_HOME);
+        screen.getActionMap().put(HBH_DEST, hbhDest);
+        screen.getActionMap().put(HBH_HOME, hbhHome);
+
+
+        fHome.add(screen);
         fHome.setVisible(true);
     }
 
@@ -239,24 +217,24 @@ class MainScreen {
     }
 
     public void changeHomePanel(String newHomeWeather) throws IOException{
-        fHome.remove(homeP);
-        fHome.remove(destP);
+        screen.remove(homeP);
+        screen.remove(destP);
         homeWeather = weather.indexOf(newHomeWeather);
         homeP = new JPanelWBI(panels[homeWeather]);
         setUpHomePanel(homeP);
-        fHome.add(homeP);
-        fHome.add(destP);
+        screen.add(homeP);
+        screen.add(destP);
         fHome.setVisible(true);
     }
 
     public void changeDestPanel(String newDestWeather) throws IOException{
-        fHome.remove(homeP);
-        fHome.remove(destP);
+        screen.remove(homeP);
+        screen.remove(destP);
         destWeather = weather.indexOf(newDestWeather);
         destP = new JPanelWBI(panels[destWeather]);
         setUpDestPanel(destP);
-        fHome.add(homeP);
-        fHome.add(destP);
+        screen.add(homeP);
+        screen.add(destP);
         fHome.setVisible(true);
     }
 
@@ -339,4 +317,31 @@ class MainScreen {
     private String getDestWeatherCode(){
         return destForecast.getIcon() + "d";
     }
+
+    private Action hbhDest = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                switchToHourFromDest();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    };
+
+    private Action hbhHome = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                switchToHourFromHome();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    };
+
+
+
+
+
 }
