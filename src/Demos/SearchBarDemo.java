@@ -38,6 +38,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.io.IOException;
 
+// a demo to display how the SearchBar classes operate and how to use them
 public class SearchBarDemo extends JPanel {
 
     public SearchBarDemo() throws IOException {
