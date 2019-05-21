@@ -39,8 +39,7 @@ class MainScreen {
 
     // frames for each screen
     static JFrame fHome;
-    JFrame fDay;
-    JFrame fWeek;
+    JPanelWBI homeP, destP;
 
     // size of phone screen
     private int pHeight = 1920/3;
@@ -191,11 +190,11 @@ class MainScreen {
 
         // gets index of home weather, creates clone of homePanel
         homeWeather = weather.indexOf(hWeatherCode);
-        JPanelWBI homeP = new JPanelWBI(panels[homeWeather]);
+        homeP = new JPanelWBI(panels[homeWeather]);
 
         // gets index of destination weather, creates clone of destPanel
         destWeather = weather.indexOf(dWeatherCode);
-        JPanelWBI destP = new JPanelWBI(panels[destWeather]);
+        destP = new JPanelWBI(panels[destWeather]);
 
         // sets up the homePanel & destination panel
         if (!hWeatherCode.equals("ND")){
@@ -223,10 +222,10 @@ class MainScreen {
     }
 
     public void changeHomePanel(String newHomeWeather) throws IOException{
-        fHome.removeAll(); // BUG
+        fHome.remove(homeP);
+        fHome.remove(destP);
         homeWeather = weather.indexOf(newHomeWeather);
-        JPanelWBI homeP = new JPanelWBI(panels[homeWeather]);
-        JPanelWBI destP = new JPanelWBI(panels[destWeather]);
+        homeP = new JPanelWBI(panels[homeWeather]);
         setUpHomePanel(homeP);
         fHome.add(homeP);
         fHome.add(destP);
@@ -234,10 +233,10 @@ class MainScreen {
     }
 
     public void changeDestPanel(String newDestWeather) throws IOException{
-        fHome.removeAll(); // BUG
+        fHome.remove(homeP);
+        fHome.remove(destP);
         destWeather = weather.indexOf(newDestWeather);
-        JPanelWBI homeP = new JPanelWBI(panels[homeWeather]);
-        JPanelWBI destP = new JPanelWBI(panels[destWeather]);
+        destP = new JPanelWBI(panels[destWeather]);
         setUpDestPanel(destP);
         fHome.add(homeP);
         fHome.add(destP);
@@ -269,6 +268,7 @@ class MainScreen {
         JLabel image = new JLabel(new ImageIcon(icon));
         SJLabel temp = new SJLabel(homeForecast.getTemp() + "°C");
         temp.setFont(new Font("Serif", Font.BOLD, 32));
+        temp.setForeground(Color.white);
         centre.add(image, BorderLayout.CENTER);
         centre.add(temp, BorderLayout.SOUTH);
         centre.setOpaque(false);
@@ -277,6 +277,7 @@ class MainScreen {
         JPanel cityName = new JPanel();
         JLabel location = new JLabel(home);
         location.setFont(new Font("Serif", Font.BOLD, 32));
+        location.setForeground(Color.white);
         cityName.add(location);
         cityName.setOpaque(false);
         panel.add(cityName, BorderLayout.SOUTH);
@@ -295,6 +296,7 @@ class MainScreen {
         JLabel image = new JLabel(new ImageIcon(icon));
         SJLabel temp = new SJLabel(homeForecast.getTemp() + "°C");
         temp.setFont(new Font("Serif", Font.BOLD, 32));
+        temp.setForeground(Color.white);
         centre.add(image, BorderLayout.CENTER);
         centre.add(temp, BorderLayout.SOUTH);
         centre.setOpaque(false);
@@ -303,8 +305,8 @@ class MainScreen {
         JPanel cityName = new JPanel();
         JLabel location = new JLabel(dest);
         location.setFont(new Font("Serif", Font.BOLD, 32));
+        location.setForeground(Color.white);
         cityName.add(location);
-        cityName.setFont(new Font("Serif", Font.BOLD, 1));
         cityName.setOpaque(false);
         panel.add(cityName, BorderLayout.SOUTH);
     }
