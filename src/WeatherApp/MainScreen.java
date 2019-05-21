@@ -8,7 +8,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -51,14 +53,12 @@ class MainScreen {
         home = h;
         dest = d;
 
-        homeForecast = Weather.getCurrentWeather(h);
-        destForecast = Weather.getCurrentWeather(d);
-        // initialises combo box
+        // initialises combo boxes
         locations = Files.readAllLines(Paths.get(cities)); // read in history file
-
         homeBox = new JComboBox(locations.toArray());
         homeBox.setEditable(true);
         homeBox.setSelectedIndex(-1);
+
         homeBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -69,11 +69,11 @@ class MainScreen {
                 }
             }
         });
-        //AutoCompletion.enable(homeBox);
 
         destBox = new JComboBox(locations.toArray());
         destBox.setEditable(true);
         destBox.setSelectedIndex(-1);
+
         destBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -84,7 +84,6 @@ class MainScreen {
                 }
             }
         });
-        //AutoCompletion.enable(destBox);
 
         // initialises weather array & panels
         initWeather();
@@ -93,18 +92,14 @@ class MainScreen {
         // initialises home frame
         initHome();
 
-        // initialises day frame
 
 
-        // initialises week frame
     }
 
-    /**  DONE COMMENTING **/
     public static void main(String[] args) throws Exception{
         MainScreen ui = new MainScreen("Cambridge,UK", "Oxford,UK");
     }
 
-    /**  DONE COMMENTING **/
     public void initWeather(){
         // initialises weather types array
         weather = new ArrayList<>();
@@ -120,7 +115,6 @@ class MainScreen {
         weather.add("ND");
     }
 
-    /**  DONE COMMENTING **/
     public void initBackgroundPanels() throws Exception{
         // array of images corresponding to types of weather
         BufferedImage[] images = new BufferedImage[10];
@@ -150,7 +144,6 @@ class MainScreen {
     static public void reInit(){
         fHome.setVisible(true);
     }
-    /**  DONE COMMENTING **/
     public void initHome() throws IOException{
         // creates home frame & sets size to size of phone
         fHome = new JFrame();
@@ -166,26 +159,18 @@ class MainScreen {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
                 switch (e.getKeyCode()) {
                     case 38:
+                        switchToHourFromDest();
                         // up
-                        try {
-                            switchToHourFromDest();
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
                         break;
                     case 40:
                         // down
+                        switchToHourFromHome();
                         break;
                     case 37:
+
                         // left
-                        try {
-                            switchToHourFromHome();
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
                         break;
                     case 39:
                         // right
@@ -221,24 +206,40 @@ class MainScreen {
             setUpDestPanel(destP);
         }
 
-        //
+        //adds panels to frame
         fHome.add(homeP);
         fHome.add(destP);
         fHome.setVisible(true);
     }
 
-    public void switchToHourFromHome() throws Exception{
-        fHome.setVisible(false);
-        HourByHour hourF = new HourByHour();
-        hourF.create(home);
-    }
-    public void switchToHourFromDest() throws Exception{
-        fHome.setVisible(false);
-        HourByHour hourF = new HourByHour();
-        hourF.create(dest);
+    //changes to hour by hour using home
+    private void switchToHourFromHome(){
+        try{
+            fHome.setVisible(false);
+            HourByHour hourF = new HourByHour();
+            hourF.create(home);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
-    public void changeHomePanel(String newHomeWeather) throws IOException{
+    //changes to hourbyhour using destination
+    private void switchToHourFromDest(){
+        try{
+            fHome.setVisible(false);
+            HourByHour hourF = new HourByHour();
+            hourF.create(dest);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    //changes the home panel to the new weather
+    private void changeHomePanel(String newHomeWeather) throws IOException{
         fHome.remove(homeP);
         fHome.remove(destP);
         homeWeather = weather.indexOf(newHomeWeather);
@@ -249,7 +250,8 @@ class MainScreen {
         fHome.setVisible(true);
     }
 
-    public void changeDestPanel(String newDestWeather) throws IOException{
+    //changes the destination panel to the new weather
+    private void changeDestPanel(String newDestWeather) throws IOException{
         fHome.remove(homeP);
         fHome.remove(destP);
         destWeather = weather.indexOf(newDestWeather);
@@ -260,28 +262,31 @@ class MainScreen {
         fHome.setVisible(true);
     }
 
-    public void changeHomeLocation(String newHomeLoc) throws IOException{
+    //changes to a new home location
+    private void changeHomeLocation(String newHomeLoc) throws IOException{
         home = newHomeLoc;
-        homeForecast = Weather.getCurrentWeather(home);
         String hWeatherCode = getHomeWeatherCode();
         changeHomePanel(hWeatherCode);
     }
 
-    public void changeDestLocation(String newDestLoc) throws IOException{
+    //changes to a new destination location
+    private void changeDestLocation(String newDestLoc) throws IOException{
         dest = newDestLoc;
-        destForecast = Weather.getCurrentWeather(dest);
         String dWeatherCode = getDestWeatherCode();
         changeDestPanel(dWeatherCode);
     }
 
+
     private void setUpHomePanel(JPanelWBI panel) throws IOException {
         panel.setLayout(new BorderLayout());
 
+        //sets up search bar
         JPanel searchBar = new JPanel();
         searchBar.add(homeBox, BorderLayout.CENTER);
         searchBar.setOpaque(false);
         panel.add(searchBar, BorderLayout.NORTH);
 
+        //adds all info to the panel
         JPanel centre = new JPanel();
         BufferedImage icon = getIcon(getHomeWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
@@ -291,7 +296,6 @@ class MainScreen {
         centre.add(temp, BorderLayout.SOUTH);
         centre.setOpaque(false);
         panel.add(centre, BorderLayout.CENTER);
-
         JPanel cityName = new JPanel();
         SJLabel location = new SJLabel(home);
         location.setForeground(Color.white);
@@ -303,21 +307,22 @@ class MainScreen {
     private void setUpDestPanel(JPanelWBI panel) throws IOException{
         panel.setLayout(new BorderLayout());
 
+        //sets up search bar
         JPanel searchBar = new JPanel();
         searchBar.add(destBox);
         searchBar.setOpaque(false);
         panel.add(searchBar, BorderLayout.NORTH);
 
+        //adds everything to the panel
         JPanel centre = new JPanel();
-        BufferedImage icon = getIcon(getDestWeatherCode());
+        BufferedImage icon = getIcon(getHomeWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
-        SJLabel temp = new SJLabel(destForecast.getTemp() + "°C");
+        SJLabel temp = new SJLabel(homeForecast.getTemp() + "°C");
         temp.setForeground(Color.white);
         centre.add(image, BorderLayout.CENTER);
         centre.add(temp, BorderLayout.SOUTH);
         centre.setOpaque(false);
         panel.add(centre, BorderLayout.CENTER);
-
         JPanel cityName = new JPanel();
         SJLabel location = new SJLabel(dest);
         location.setForeground(Color.white);
@@ -327,16 +332,34 @@ class MainScreen {
     }
 
     private BufferedImage getIcon(String weather) throws IOException {
-        BufferedImage icon;
+        BufferedImage icon = null;
         icon = ImageIO.read(new File("data/icons/" + weather + ".png"));
         return icon;
     }
 
     private String getHomeWeatherCode(){
-        return homeForecast.getIcon() + "d";
+        String hWeatherCode;
+        if (home.equals("ND")){
+            homeForecast = null;
+            hWeatherCode = "ND";
+        }
+        else{
+            homeForecast = Weather.getCurrentWeather(home);
+            hWeatherCode = homeForecast.getIcon() + "d";
+        }
+        return hWeatherCode;
     }
 
     private String getDestWeatherCode(){
-        return destForecast.getIcon() + "d";
+        String dWeatherCode;
+        if(dest.equals("ND")){
+            destForecast = null;
+            dWeatherCode = "ND";
+        }
+        else{
+            destForecast = Weather.getCurrentWeather(dest);
+            dWeatherCode = destForecast.getIcon() + "d";
+        }
+        return dWeatherCode;
     }
 }
