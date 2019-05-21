@@ -6,8 +6,6 @@
       <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/DayByDay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/DayByDay.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/UI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/UI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/UI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/UI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/DayByDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/DayByDay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,6 +48,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="851">
               <caret line="157" selection-start-line="157" selection-end-line="157" />
+              <folding>
+                <element signature="e#4593#4594#0" expanded="true" />
+                <element signature="e#4634#4635#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -159,7 +161,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/gson-2.6.2.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/gson-2.6.2.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.24770115" />
@@ -253,7 +255,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="0" width="3204" height="1760" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26415703" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -415,6 +416,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="851">
           <caret line="157" selection-start-line="157" selection-end-line="157" />
+          <folding>
+            <element signature="e#4593#4594#0" expanded="true" />
+            <element signature="e#4634#4635#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
