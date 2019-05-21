@@ -5,13 +5,15 @@ import com.google.gson.JsonObject;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class DayByDay extends JPanel {
+public class DayByDay implements ActionListener {
 
     //list of forecasts for next 5 days
     private ArrayList<Forecast> forecast;
@@ -48,6 +50,8 @@ public class DayByDay extends JPanel {
         screen.add(forecasts, BorderLayout.CENTER);
         frame.add(screen);
 
+        fshow();
+
         return this;
     }
 
@@ -75,14 +79,15 @@ public class DayByDay extends JPanel {
         //adds a back button
         JButton back = new JButton("⇦");
         panel.add(back);
+        back.addActionListener(this);
+        back.setPreferredSize(new Dimension(10,30));
 
         //sets the colour and layout
         panel.setBackground(Color.orange);
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
 
         //ads a location label
-        JLabel location = new JLabel(loc);
-        panel.add(Box.createRigidArea(new Dimension(20, 0)));
+        SJLabel location = new SJLabel(loc);
         panel.add(location);
 
         panel.setBounds(0,0, Pwidth, Pheight/6);
@@ -108,17 +113,14 @@ public class DayByDay extends JPanel {
         panel.setLayout(new GridLayout(1,0));
 
         //sets up labels for date, icon and temperature
-        JLabel date = new JLabel(todayForecast.getDay()); // = getDay();
+        SJLabel date = new SJLabel(todayForecast.getDay()); // = getDay();
         JLabel image = new JLabel(new ImageIcon(icon));
-        JLabel temp = new JLabel(todayForecast.getTemp()+ "°C"); // = getTemp();
+        SJLabel temp = new SJLabel(todayForecast.getTemp()+ "°C"); // = getTemp();
 
         //sets the background colour and adds the labels to panel
         panel.setBackground(colour);
-        panel.add(Box.createRigidArea(new Dimension(20, 0)));
         panel.add(image);
-        panel.add(Box.createRigidArea(new Dimension(20, 0)));
         panel.add(date);
-        panel.add(Box.createRigidArea(new Dimension(20, 0)));
         panel.add(temp);
 
         panel.setBounds(0,(day + 1) * (Pheight / 6) - 15, Pwidth, (Pheight/6) - 15);
@@ -181,6 +183,13 @@ public class DayByDay extends JPanel {
         }
 
         return col;
+    }
+
+    // functionality for the button
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        frame.setVisible(false);
+        UI.reInit();
     }
 
 
