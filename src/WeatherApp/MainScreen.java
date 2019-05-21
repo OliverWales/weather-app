@@ -50,6 +50,10 @@ class UI {
         f_comp.add(screen);
         GridLayout experimentLayout = new GridLayout(2,1);
         screen.setLayout(experimentLayout);
+        JPanel overlay = new JPanel();
+        overlay.setLayout( new OverlayLayout(overlay) );
+        overlay.add(new CitySearchBar());
+        screen.add(overlay);
 
         home = "Cambridge,UK";
         dest = "Oxford,UK";

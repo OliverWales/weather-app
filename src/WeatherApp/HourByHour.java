@@ -24,7 +24,7 @@ public class HourByHour implements ActionListener {
     public HourByHour create(String location) throws IOException {
         JsonObject locationForecast = Weather.getForecastObject(location);
         frame = createFrame();
-        forecast = Weather.getNextWeekForecast(locationForecast);
+        forecast = Weather.getNextDayForecast(locationForecast);
         myPanel = createPanel(location);
         frame.add(myPanel);
         show();
@@ -49,7 +49,7 @@ public class HourByHour implements ActionListener {
         back.addActionListener(this);
         back.setPreferredSize(new Dimension(10,30));
         // diaplays current location at top of screen
-        JLabel location = new JLabel(loc);
+        SJLabel location = new SJLabel(loc);
         top.setBackground(Color.orange);
         top.add(back);
         top.add(location);
@@ -66,9 +66,9 @@ public class HourByHour implements ActionListener {
             panels[i] = new JPanel(new GridLayout(1, 0));
             // add everything to forecast panel
             JLabel icon = new JLabel(new ImageIcon(getIconImage(f.getIcon())));
-            JLabel time = new JLabel(f.getTime());
+            SJLabel time = new SJLabel(f.getTime());
             String temp = String.valueOf(f.getTemp());
-            JLabel tempLabel = new JLabel(temp + " °C");
+            SJLabel tempLabel = new SJLabel(temp + " °C");
             panels[i].setOpaque(true);
             panels[i].setBackground(requestColour(f.getIcon() + "d"));
             panels[i].add(icon);
@@ -136,7 +136,8 @@ public class HourByHour implements ActionListener {
     // functionality for the button
     @Override
     public void actionPerformed(ActionEvent e) {
-        myPanel.setVisible(false);
+        frame.setVisible(false);
+        UI.reInit();
     }
 
     //    example main method to make it run on its own
