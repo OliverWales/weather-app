@@ -220,15 +220,27 @@ class MainScreen {
         fHome.setVisible(true);
     }
 
-    public void switchToHourFromHome() throws Exception{
-        fHome.setVisible(false);
-        HourByHour hourF = new HourByHour();
-        hourF.create(home);
+    private void switchToHourFromHome(){
+        try{
+            fHome.setVisible(false);
+            HourByHour hourF = new HourByHour();
+            hourF.create(home);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
-    public void switchToHourFromDest() throws Exception{
-        fHome.setVisible(false);
-        HourByHour hourF = new HourByHour();
-        hourF.create(dest);
+    private void switchToHourFromDest(){
+        try{
+            fHome.setVisible(false);
+            HourByHour hourF = new HourByHour();
+            hourF.create(dest);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public void changeHomePanel(String newHomeWeather) throws IOException{
