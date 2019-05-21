@@ -53,6 +53,8 @@ class MainScreen {
         home = h;
         dest = d;
 
+        homeForecast = Weather.getCurrentWeather(h);
+        destForecast = Weather.getCurrentWeather(d);
         // initialises combo box
         locations = Files.readAllLines(Paths.get(cities)); // read in history file
 
@@ -252,12 +254,14 @@ class MainScreen {
 
     public void changeHomeLocation(String newHomeLoc) throws IOException{
         home = newHomeLoc;
+        homeForecast = Weather.getCurrentWeather(home);
         String hWeatherCode = getHomeWeatherCode();
         changeHomePanel(hWeatherCode);
     }
 
     public void changeDestLocation(String newDestLoc) throws IOException{
         dest = newDestLoc;
+        destForecast = Weather.getCurrentWeather(dest);
         String dWeatherCode = getDestWeatherCode();
         changeDestPanel(dWeatherCode);
     }
@@ -297,9 +301,9 @@ class MainScreen {
         panel.add(searchBar, BorderLayout.NORTH);
 
         JPanel centre = new JPanel();
-        BufferedImage icon = getIcon(getHomeWeatherCode());
+        BufferedImage icon = getIcon(getDestWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
-        SJLabel temp = new SJLabel(homeForecast.getTemp() + "°C");
+        SJLabel temp = new SJLabel(destForecast.getTemp() + "°C");
         temp.setForeground(Color.white);
         centre.add(image, BorderLayout.CENTER);
         centre.add(temp, BorderLayout.SOUTH);
@@ -315,34 +319,16 @@ class MainScreen {
     }
 
     private BufferedImage getIcon(String weather) throws IOException {
-        BufferedImage icon = null;
+        BufferedImage icon;
         icon = ImageIO.read(new File("data/icons/" + weather + ".png"));
         return icon;
     }
 
     private String getHomeWeatherCode(){
-        String hWeatherCode;
-        if (home.equals("ND")){
-            homeForecast = null;
-            hWeatherCode = "ND";
-        }
-        else{
-            homeForecast = Weather.getCurrentWeather(home);
-            hWeatherCode = homeForecast.getIcon() + "d";
-        }
-        return hWeatherCode;
+        return homeForecast.getIcon() + "d";
     }
 
     private String getDestWeatherCode(){
-        String dWeatherCode;
-        if(dest.equals("ND")){
-            destForecast = null;
-            dWeatherCode = "ND";
-        }
-        else{
-            destForecast = Weather.getCurrentWeather(dest);
-            dWeatherCode = destForecast.getIcon() + "d";
-        }
-        return dWeatherCode;
+        return destForecast.getIcon() + "d";
     }
 }
