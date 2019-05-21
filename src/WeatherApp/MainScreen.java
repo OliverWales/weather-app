@@ -45,7 +45,7 @@ class MainScreen {
     private int pHeight = 1920/3;
     private int pWidth = 1080/3;
 
-    static final String history = "/home/archie/Documents/weather-app/data/history.txt"; // file containing previous searches
+    static final String cities = "/home/archie/Documents/weather-app/data/citylistFixed.txt"; // file containing previous searches
     private List<String> locations; // previous searches loaded into a List
     JComboBox homeBox, destBox;
 
@@ -54,9 +54,10 @@ class MainScreen {
         dest = d;
 
         // initialises combo box
-        locations = Files.readAllLines(Paths.get(history)); // read in history file
+        locations = Files.readAllLines(Paths.get(cities)); // read in history file
 
         homeBox = new JComboBox(locations.toArray());
+        homeBox.setEditable(true);
         homeBox.setSelectedIndex(-1);
         homeBox.addActionListener(new ActionListener() {
             @Override
@@ -68,7 +69,10 @@ class MainScreen {
                 }
             }
         });
+        //AutoCompletion.enable(homeBox);
+
         destBox = new JComboBox(locations.toArray());
+        destBox.setEditable(true);
         destBox.setSelectedIndex(-1);
         destBox.addActionListener(new ActionListener() {
             @Override
@@ -80,6 +84,8 @@ class MainScreen {
                 }
             }
         });
+        //AutoCompletion.enable(destBox);
+
         // initialises weather array & panels
         initWeather();
         initBackgroundPanels();
@@ -259,7 +265,7 @@ class MainScreen {
         panel.setLayout(new BorderLayout());
 
         JPanel searchBar = new JPanel();
-        searchBar.add(homeBox);
+        searchBar.add(homeBox, BorderLayout.CENTER);
         searchBar.setOpaque(false);
         panel.add(searchBar, BorderLayout.NORTH);
 
