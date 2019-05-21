@@ -31,7 +31,7 @@ public class HourByHour implements ActionListener {
     }
 
     private JFrame createFrame() {
-        JFrame frame = new JFrame("Every 3 Hours Overview");
+        JFrame frame = new JFrame("The Next 24 Hours");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(Pwidth, Pheight));
         return frame;
@@ -46,8 +46,9 @@ public class HourByHour implements ActionListener {
         // back button to make panel disappear so to return to home page
         JButton back = new JButton("⇦");
         back.addActionListener(this);
+        back.setPreferredSize(new Dimension(10,30));
         // diaplays current location at top of screen
-        JLabel location = new JLabel("Cambridge"); //TODO: replace with current location? from get method in main class?
+        JLabel location = new JLabel("CAMBRIDGE"); //TODO: replace with current location? from get method in main class?
         top.setBackground(Color.orange);
         top.add(back);
         top.add(location);
