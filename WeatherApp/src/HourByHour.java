@@ -7,12 +7,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class HourByHour implements ActionListener {
+public class HourByHour {
     private JFrame frame;
     private JPanel myPanel;
     private static int Pwidth = 1080 / 3;
@@ -23,7 +25,7 @@ public class HourByHour implements ActionListener {
 //    takes a location as input and generates the weather forecast
     public HourByHour create(String location) throws IOException {
         JsonObject locationForecast = Weather.getForecastObject(location);
-        frame = createFrame();
+        frame = createFrame(location);
         forecast = Weather.getNextDayForecast(locationForecast);
         myPanel = createPanel(location);
         frame.add(myPanel);
@@ -31,10 +33,11 @@ public class HourByHour implements ActionListener {
         return this;
     }
 
-    private JFrame createFrame() {
+    private JFrame createFrame(String location) {
         JFrame frame = new JFrame("The Next 24 Hours");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(Pwidth, Pheight));
+
         return frame;
     }
 
@@ -46,13 +49,28 @@ public class HourByHour implements ActionListener {
         JPanel top = new JPanel(new GridLayout(1, 0));
         // back button to make panel disappear so to return to home page
         JButton back = new JButton("⇦");
-        back.addActionListener(this);
-        back.setPreferredSize(new Dimension(10,30));
+        JButton forward = new JButton("⇒");
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                MainScreen.reInit();
+            }
+        });
+
+        forward.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                switchToDayByDay(loc);
+            }
+        });
         // diaplays current location at top of screen
         SJLabel location = new SJLabel(loc);
         top.setBackground(Color.orange);
         top.add(back);
         top.add(location);
+        top.add(forward);
         screen.add(top, BorderLayout.NORTH);
 
 //        new panel for all the forecasts to be displayed in
@@ -89,6 +107,12 @@ public class HourByHour implements ActionListener {
         BufferedImage icon = null;
         icon = ImageIO.read(new File("src/data/icons/" + weather + "d.png"));
         return icon;
+    }
+
+    private void switchToDayByDay(String location) {
+        DayByDay dbd = new DayByDay();
+        dbd.create(location);
+        frame.setVisible(false);
     }
 
     private void show() {
@@ -134,11 +158,7 @@ public class HourByHour implements ActionListener {
     }
 
     // functionality for the button
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        frame.setVisible(false);
-        MainScreen.reInit();
-    }
+
 
     //    example main method to make it run on its own
     public static void main(String[] args) {
@@ -146,7 +166,7 @@ public class HourByHour implements ActionListener {
             @Override
             public void run() {
                 try {
-                    new HourByHour().create("Cambridge");
+                    new HourByHour().create("Cambridge,UK");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

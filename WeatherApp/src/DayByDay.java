@@ -23,34 +23,38 @@ public class DayByDay implements ActionListener {
     private static int Pheight = 1920/3;
     private JFrame frame;
 
-    public DayByDay create(String location) throws IOException {
+    public DayByDay create(String location) {
+        try{
+            frame = createFrame();
 
-        frame = createFrame();
+            //creates a border layour screen panel
+            JPanel screen = new JPanel();
+            screen.setLayout(new BorderLayout());
 
-        //creates a border layour screen panel
-        JPanel screen = new JPanel();
-        screen.setLayout(new BorderLayout());
+            //creates a top panel containing the location and back button
+            JPanel top = new JPanel(new GridLayout(1,0));
+            top.add(createLocationPanel(location));
 
-        //creates a top panel containing the location and back button
-        JPanel top = new JPanel(new GridLayout(1,0));
-        top.add(createLocationPanel(location));
+            //gets forecast for given location
+            JsonObject locationForecast = Weather.getForecastObject(location);
+            forecast = Weather.getNextWeekForecast(locationForecast);
 
-        //gets forecast for given location
-        JsonObject locationForecast = Weather.getForecastObject(location);
-        forecast = Weather.getNextWeekForecast(locationForecast);
+            //creates a panels of weather info for each of the coming days
+            JPanel forecasts = new JPanel(new GridLayout(0,1));
+            for (int i = 0; i<=4; i++){
+                forecasts.add(createDayPanel(i));
+            }
 
-        //creates a panels of weather info for each of the coming days
-        JPanel forecasts = new JPanel(new GridLayout(0,1));
-        for (int i = 0; i<=4; i++){
-            forecasts.add(createDayPanel(i));
+            //adds the top and weather info panels to the screen and the screen to the frame
+            screen.add(top, BorderLayout.NORTH);
+            screen.add(forecasts, BorderLayout.CENTER);
+            frame.add(screen);
+
+            fshow();
+
+        }catch(Exception e){
+            e.printStackTrace();
         }
-
-        //adds the top and weather info panels to the screen and the screen to the frame
-        screen.add(top, BorderLayout.NORTH);
-        screen.add(forecasts, BorderLayout.CENTER);
-        frame.add(screen);
-
-        fshow();
 
         return this;
     }
@@ -134,11 +138,9 @@ public class DayByDay implements ActionListener {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                try{
-                    new DayByDay().create("Cambridge,UK").fshow();
-                } catch (IOException e){
-                    e.printStackTrace();
-                }
+
+                new DayByDay().create("Cambridge,UK").fshow();
+
             }
         });
     }
