@@ -61,28 +61,30 @@ class MainScreen {
         // initialises combo box
         locations = Files.readAllLines(Paths.get(cities)); // read in history file
 
-        homeBox = new JComboBox(locations.toArray());
-        homeBox.setEditable(true);
-        homeBox.setSelectedIndex(-1);
+        homeBox = new JComboBox(locations.toArray()); // ComboBox to enter home location into (provides list of cities)
+        homeBox.setEditable(true);  // allow user to type into box
+        homeBox.setSelectedIndex(-1);   // make box initially empty
+        // when a new location is entered:
         homeBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
-                    changeHomeLocation((String) homeBox.getSelectedItem());
+                    changeHomeLocation((String) homeBox.getSelectedItem()); // update the home location panel
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
 
-        destBox = new JComboBox(locations.toArray());
-        destBox.setEditable(true);
-        destBox.setSelectedIndex(-1);
+        destBox = new JComboBox(locations.toArray()); // ComboBox to enter destination into (provides list of cities)
+        destBox.setEditable(true); // allow user to type into box
+        destBox.setSelectedIndex(-1); // make box initially empty
+        // when a new location is entered:
         destBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
-                    changeDestLocation((String) destBox.getSelectedItem());
+                    changeDestLocation((String) destBox.getSelectedItem()); // update the destination panel
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -95,11 +97,6 @@ class MainScreen {
 
         // initialises home frame
         initHome();
-
-        // initialises day frame
-
-
-        // initialises week frame
     }
 
     /**  DONE COMMENTING **/
