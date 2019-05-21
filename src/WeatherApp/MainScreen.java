@@ -159,6 +159,7 @@ class MainScreen {
         fHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // add keyboard listener for screen change
+        // add keyboard listener for screen change
         fHome.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -166,15 +167,17 @@ class MainScreen {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
+                //System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
                 switch (e.getKeyCode()) {
                     case 38:
+                        switchToHourFromDest();
                         // up
                         break;
                     case 40:
                         // down
                         break;
                     case 37:
+                        switchToHourFromHome();
                         // left
                         break;
                     case 39:
