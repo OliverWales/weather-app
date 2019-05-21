@@ -137,7 +137,7 @@ public class HourByHour implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         frame.setVisible(false);
-        UI.reInit();
+        MainScreen.reInit();
     }
 
     //    example main method to make it run on its own
