@@ -268,6 +268,7 @@ class MainScreen {
         BufferedImage icon = getIcon(getHomeWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
         SJLabel temp = new SJLabel(homeForecast.getTemp() + "°C");
+        temp.setFont(new Font("Serif", Font.BOLD, 32));
         centre.add(image, BorderLayout.CENTER);
         centre.add(temp, BorderLayout.SOUTH);
         centre.setOpaque(false);
@@ -275,6 +276,7 @@ class MainScreen {
 
         JPanel cityName = new JPanel();
         JLabel location = new JLabel(home);
+        location.setFont(new Font("Serif", Font.BOLD, 32));
         cityName.add(location);
         cityName.setOpaque(false);
         panel.add(cityName, BorderLayout.SOUTH);
@@ -292,6 +294,7 @@ class MainScreen {
         BufferedImage icon = getIcon(getHomeWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
         SJLabel temp = new SJLabel(homeForecast.getTemp() + "°C");
+        temp.setFont(new Font("Serif", Font.BOLD, 32));
         centre.add(image, BorderLayout.CENTER);
         centre.add(temp, BorderLayout.SOUTH);
         centre.setOpaque(false);
@@ -299,7 +302,9 @@ class MainScreen {
 
         JPanel cityName = new JPanel();
         JLabel location = new JLabel(dest);
+        location.setFont(new Font("Serif", Font.BOLD, 32));
         cityName.add(location);
+        cityName.setFont(new Font("Serif", Font.BOLD, 1));
         cityName.setOpaque(false);
         panel.add(cityName, BorderLayout.SOUTH);
     }

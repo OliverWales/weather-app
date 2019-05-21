@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed74ee51-a7bb-489a-b622-646272815bf4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/history.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/history.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/MainScreen.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" afterDir="false" />
     </list>
@@ -50,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="890">
-              <caret line="98" column="68" selection-start-line="98" selection-start-column="68" selection-end-line="98" selection-end-column="68" />
+            <state relative-caret-position="223">
+              <caret line="270" column="55" selection-start-line="270" selection-start-column="55" selection-end-line="270" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -387,8 +383,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="890">
-          <caret line="98" column="68" selection-start-line="98" selection-start-column="68" selection-end-line="98" selection-end-column="68" />
+        <state relative-caret-position="223">
+          <caret line="270" column="55" selection-start-line="270" selection-start-column="55" selection-end-line="270" selection-end-column="55" />
         </state>
       </provider>
     </entry>
