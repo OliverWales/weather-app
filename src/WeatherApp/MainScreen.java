@@ -87,7 +87,7 @@ class MainScreen {
         ArrayList<Path> files = new ArrayList<>();
 
         // adds all sources to file array
-        Files.newDirectoryStream(Paths.get("src/data/backs"))
+        Files.newDirectoryStream(Paths.get("data/backs"))
                 .forEach(x -> files.add(x));
 
         // sorts file array so that indices correspond to weather correctly
@@ -164,29 +164,46 @@ class MainScreen {
         fHome.setVisible(true);
     }
 
-    private void setUpHomePanel(JPanelWBI panel) throws IOException{
-
+    private void setUpHomePanel(JPanelWBI panel) throws IOException {
         panel.setLayout(new BorderLayout());
-        JLabel location = new JLabel(home);
+
+        JPanel searchBar = new JPanel();
+        searchBar.add(new CitySearchBar());
+        panel.add(searchBar, BorderLayout.NORTH);
+
+        JPanel centre = new JPanel();
         BufferedImage icon = getIcon(getHomeWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
         JLabel temp = new JLabel(homeForecast.getTemp() + "°C");
-        panel.add(location, BorderLayout.NORTH);
-        panel.add(image, BorderLayout.CENTER);
-        panel.add(temp, BorderLayout.SOUTH);
+        centre.add(image, BorderLayout.CENTER);
+        centre.add(temp, BorderLayout.SOUTH);
+        panel.add(centre, BorderLayout.CENTER);
 
+        JPanel cityName = new JPanel();
+        JLabel location = new JLabel(home);
+        cityName.add(location);
+        panel.add(cityName, BorderLayout.SOUTH);
     }
 
     private void setUpDestPanel(JPanelWBI panel) throws IOException{
         panel.setLayout(new BorderLayout());
-        JLabel location = new JLabel(dest);
-        BufferedImage icon = getIcon(getDestWeatherCode());
-        JLabel image = new JLabel(new ImageIcon(icon));
-        JLabel temp = new JLabel(destForecast.getTemp() + "°C");
-        panel.add(location, BorderLayout.NORTH);
-        panel.add(image, BorderLayout.CENTER);
-        panel.add(temp, BorderLayout.SOUTH);
 
+        JPanel searchBar = new JPanel();
+        searchBar.add(new HistorySearchBar());
+        panel.add(searchBar, BorderLayout.NORTH);
+
+        JPanel centre = new JPanel();
+        BufferedImage icon = getIcon(getHomeWeatherCode());
+        JLabel image = new JLabel(new ImageIcon(icon));
+        JLabel temp = new JLabel(homeForecast.getTemp() + "°C");
+        centre.add(image, BorderLayout.CENTER);
+        centre.add(temp, BorderLayout.SOUTH);
+        panel.add(centre, BorderLayout.CENTER);
+
+        JPanel cityName = new JPanel();
+        JLabel location = new JLabel(dest);
+        cityName.add(location);
+        panel.add(cityName, BorderLayout.SOUTH);
     }
 
     private BufferedImage getIcon(String weather) throws IOException {

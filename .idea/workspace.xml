@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed74ee51-a7bb-489a-b622-646272815bf4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/DayByDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/DayByDay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/weather-app/Demos/SearchBarDemo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/Demos/SearchBarDemo$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/weather-app/Demos/SearchBarDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/Demos/SearchBarDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/CitySearchBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/CitySearchBar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/DayByDay$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/DayByDay$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/DayByDay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/DayByDay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/HistorySearchBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/HistorySearchBar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/HourByHour$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/HourByHour$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/HourByHour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/HourByHour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/UI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/weather-app/WeatherApp/UI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2581">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="658">
+              <caret line="191" column="46" selection-start-line="191" selection-start-column="46" selection-end-line="191" selection-end-column="46" />
               <folding>
                 <element signature="e#2952#2953#0" expanded="true" />
                 <element signature="e#2990#2991#0" expanded="true" />
@@ -29,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WeatherApp/DayByDay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="625">
-              <caret line="175" column="42" lean-forward="true" selection-start-line="175" selection-start-column="42" selection-end-line="175" selection-end-column="42" />
+            <state relative-caret-position="5075">
+              <caret line="175" column="42" selection-start-line="175" selection-start-column="42" selection-end-line="175" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -45,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/src/WeatherApp/SJLabel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="493">
-              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -57,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/src/WeatherApp/HourByHour.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="683">
-              <caret line="139" column="23" lean-forward="true" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
+              <caret line="139" column="23" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -94,10 +104,10 @@
         <option value="$PROJECT_DIR$/src/WeatherApp/CitySearchBar.java" />
         <option value="$PROJECT_DIR$/src/WeatherApp/HistorySearchBar.java" />
         <option value="$PROJECT_DIR$/src/Demos/SearchBarDemo.java" />
-        <option value="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" />
         <option value="$PROJECT_DIR$/src/WeatherApp/SLabel.java" />
         <option value="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" />
         <option value="$PROJECT_DIR$/src/WeatherApp/DayByDay.java" />
+        <option value="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" />
       </list>
     </option>
   </component>
@@ -178,7 +188,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.UI">
+  <component name="RunManager" selected="Application.MainScreen">
     <configuration name="DayByDay" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="WeatherApp.DayByDay" />
       <module name="weather-app" />
@@ -194,6 +204,19 @@
     </configuration>
     <configuration name="HourByHour" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="WeatherApp.HourByHour" />
+      <module name="weather-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="WeatherApp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WeatherApp.MainScreen" />
       <module name="weather-app" />
       <extension name="coverage">
         <pattern>
@@ -233,6 +256,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainScreen" />
         <item itemvalue="Application.UI" />
         <item itemvalue="Application.DayByDay" />
         <item itemvalue="Application.HourByHour" />
@@ -257,7 +281,7 @@
     <frame x="-2" y="0" width="3204" height="1760" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26415703" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26415703" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -266,7 +290,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.28486452" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28486452" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -396,7 +420,24 @@
     <entry file="file://$PROJECT_DIR$/src/WeatherApp/SJLabel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WeatherApp/HourByHour.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="683">
+          <caret line="139" column="23" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WeatherApp/DayByDay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5075">
+          <caret line="175" column="42" selection-start-line="175" selection-start-column="42" selection-end-line="175" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -405,28 +446,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2581">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="658">
+          <caret line="191" column="46" selection-start-line="191" selection-start-column="46" selection-end-line="191" selection-end-column="46" />
           <folding>
             <element signature="e#2952#2953#0" expanded="true" />
             <element signature="e#2990#2991#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WeatherApp/HourByHour.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="683">
-          <caret line="139" column="23" lean-forward="true" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WeatherApp/DayByDay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="625">
-          <caret line="175" column="42" lean-forward="true" selection-start-line="175" selection-start-column="42" selection-end-line="175" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
