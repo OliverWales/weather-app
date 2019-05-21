@@ -4,7 +4,7 @@ import java.io.*;
 
 public class RemoveLong {
     public static void main(String[] args) throws FileNotFoundException {
-        File fout = new File("/home/archie/Documents/weather-app/data/citylistFixed.txt");
+        File fout = new File("/home/archie/Documents/weather-app/data/citylistShortened.txt");
         FileOutputStream fos = new FileOutputStream(fout);
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
         BufferedReader reader;

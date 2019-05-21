@@ -9,7 +9,7 @@ public class SJLabel extends JLabel {
     Font font;
     public SJLabel(String text){
         super(text);
-        font = new Font("Hiragino Sans GB", BOLD,32);
+        font = new Font("Hiragino Sans GB", BOLD,28);
         setFont(font);
     }
     public void setTextSize(int size){

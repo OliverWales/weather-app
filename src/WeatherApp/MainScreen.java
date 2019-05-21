@@ -48,7 +48,7 @@ class MainScreen {
     private int pHeight = 1920/3;
     private int pWidth = 1080/3;
 
-    static final String cities = "data/citylistFixed.txt"; // file containing previous searches
+    static final String cities = "data/citylistShortened.txt"; // file containing previous searches
     private List<String> locations; // previous searches loaded into a List
     JComboBox homeBox, destBox;
 
