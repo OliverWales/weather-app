@@ -39,7 +39,7 @@ class MainScreen {
     int homeWeather;
     int destWeather;
 
-    // frames for each screen
+    // frame & panels for home screen
     static JFrame fHome;
     JPanel screen;
     JPanelWBI homeP, destP;
@@ -53,12 +53,15 @@ class MainScreen {
     JComboBox homeBox, destBox;
 
     MainScreen(String h, String d) throws Exception{
+        // sets home and destination to locations given
         home = h;
         dest = d;
-
+        
+        // gets forecasts
         homeForecast = Weather.getCurrentWeather(h);
         destForecast = Weather.getCurrentWeather(d);
-        // initialises combo box
+        
+        // initialises combo boxes
         locations = Files.readAllLines(Paths.get(cities)); // read in history file
 
         homeBox = new JComboBox(locations.toArray());
@@ -95,20 +98,13 @@ class MainScreen {
 
         // initialises home frame
         initHome();
-
-        // initialises day frame
-
-
-        // initialises week frame
     }
 
-    /**  DONE COMMENTING **/
     public static void main(String[] args) throws Exception{
         MainScreen ui = new MainScreen("Cambridge,UK", "Oxford,UK");
         fHome.hasFocus();
     }
 
-    /**  DONE COMMENTING **/
     public void initWeather(){
         // initialises weather types array
         weather = new ArrayList<>();
@@ -124,7 +120,6 @@ class MainScreen {
         weather.add("ND");
     }
 
-    /**  DONE COMMENTING **/
     public void initBackgroundPanels() throws Exception{
         // array of images corresponding to types of weather
         BufferedImage[] images = new BufferedImage[10];
@@ -152,20 +147,22 @@ class MainScreen {
         }
     }
     static public void reInit(){
+        // switches back to home frame when back button is pressed
         fHome.setVisible(true);
     }
-    /**  DONE COMMENTING **/
+
     public void initHome() throws IOException{
         // creates home frame & sets size to size of phone
         fHome = new JFrame();
-        screen = new JPanel();
         fHome.setSize(pWidth,pHeight);
+        
+        // creates panel to contain screen content
+        screen = new JPanel();
         screen.setSize(pWidth,pHeight);
         screen.setLayout(new GridLayout(2,1));
+        
+        // makes the app exit when the frame is closed
         fHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // add keyboard listener for screen change
-
 
         // gets weather codes and gets forecasts
         String hWeatherCode = getHomeWeatherCode();
@@ -187,50 +184,66 @@ class MainScreen {
             setUpDestPanel(destP);
         }
 
-        //
-
+        // adds home & destination panels to screen
         screen.add(homeP);
         screen.add(destP);
 
-        //sets up key bindings
+        //sets up key bindings for app traversal
         screen.getInputMap().put(KeyStroke.getKeyStroke("UP"), HBH_DEST);
         screen.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), HBH_HOME);
         screen.getActionMap().put(HBH_DEST, hbhDest);
         screen.getActionMap().put(HBH_HOME, hbhHome);
 
-
+        
+        // adds screen to frame & makes visible
         fHome.add(screen);
         fHome.setVisible(true);
     }
 
     public void switchToHourFromHome() throws Exception{
+        // hides home frame
         fHome.setVisible(false);
+        
+        // instantiates hour-by-hour frame and sets up
         HourByHour hourF = new HourByHour();
         hourF.create(home);
     }
     public void switchToHourFromDest() throws Exception{
+        // hides home frame
         fHome.setVisible(false);
+        
+        // instantiates hour-by-hour frame and sets up
         HourByHour hourF = new HourByHour();
         hourF.create(dest);
     }
 
     public void changeHomePanel(String newHomeWeather) throws IOException{
+        // removes current panels
         screen.remove(homeP);
         screen.remove(destP);
+        
+        // updates home location panel
         homeWeather = weather.indexOf(newHomeWeather);
         homeP = new JPanelWBI(panels[homeWeather]);
         setUpHomePanel(homeP);
+        
+        // adds home & destination panels to home frame
         screen.add(homeP);
         screen.add(destP);
         fHome.setVisible(true);
     }
 
     public void changeDestPanel(String newDestWeather) throws IOException{
+        // removes current panels
         screen.remove(homeP);
         screen.remove(destP);
+        
+        // updates destination location panel
         destWeather = weather.indexOf(newDestWeather);
         destP = new JPanelWBI(panels[destWeather]);
         setUpDestPanel(destP);
+        
+        // adds home & destination panels to home frame
         screen.add(homeP);
         screen.add(destP);
         fHome.setVisible(true);
@@ -238,26 +251,38 @@ class MainScreen {
 
     public void changeHomeLocation(String newHomeLoc) throws IOException{
         home = newHomeLoc;
+        
+        // gets forecast & weather code for location
         homeForecast = Weather.getCurrentWeather(home);
         String hWeatherCode = getHomeWeatherCode();
+        
+        // updates panel
         changeHomePanel(hWeatherCode);
     }
 
     public void changeDestLocation(String newDestLoc) throws IOException{
         dest = newDestLoc;
+        
+        // gets forecast & weather code for location
         destForecast = Weather.getCurrentWeather(dest);
         String dWeatherCode = getDestWeatherCode();
+        
+        // updates panel
         changeDestPanel(dWeatherCode);
     }
 
     private void setUpHomePanel(JPanelWBI panel) throws IOException {
         panel.setLayout(new BorderLayout());
-
+        
+        // creates basic framework for home screen panels
+        
+        // adds a search bar to panel
         JPanel searchBar = new JPanel();
         searchBar.add(homeBox, BorderLayout.CENTER);
         searchBar.setOpaque(false);
         panel.add(searchBar, BorderLayout.NORTH);
 
+        // creates main display of weather info in panel
         JPanel centre = new JPanel();
         BufferedImage icon = getIcon(getHomeWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
@@ -268,6 +293,7 @@ class MainScreen {
         centre.setOpaque(false);
         panel.add(centre, BorderLayout.CENTER);
 
+        // displays location information
         JPanel cityName = new JPanel();
         SJLabel location = new SJLabel(home);
         location.setForeground(Color.white);
@@ -279,11 +305,15 @@ class MainScreen {
     private void setUpDestPanel(JPanelWBI panel) throws IOException{
         panel.setLayout(new BorderLayout());
 
+        // creates basic framework for home screen panels
+        
+        // adds a search bar to panel
         JPanel searchBar = new JPanel();
         searchBar.add(destBox);
         searchBar.setOpaque(false);
         panel.add(searchBar, BorderLayout.NORTH);
 
+        // creates main display of weather info in panel
         JPanel centre = new JPanel();
         BufferedImage icon = getIcon(getDestWeatherCode());
         JLabel image = new JLabel(new ImageIcon(icon));
@@ -294,6 +324,7 @@ class MainScreen {
         centre.setOpaque(false);
         panel.add(centre, BorderLayout.CENTER);
 
+        // displays location information
         JPanel cityName = new JPanel();
         SJLabel location = new SJLabel(dest);
         location.setForeground(Color.white);
@@ -303,20 +334,24 @@ class MainScreen {
     }
 
     private BufferedImage getIcon(String weather) throws IOException {
+        // gets weather icon from directory
         BufferedImage icon;
         icon = ImageIO.read(new File("data/icons/" + weather + ".png"));
         return icon;
     }
 
     private String getHomeWeatherCode(){
+        // gets weather code
         return homeForecast.getIcon() + "d";
     }
 
     private String getDestWeatherCode(){
+        // gets weather code
         return destForecast.getIcon() + "d";
     }
 
     private Action hbhDest = new AbstractAction() {
+        // switches to hourbyhour for destination when up arrow pressed
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
@@ -328,6 +363,7 @@ class MainScreen {
     };
 
     private Action hbhHome = new AbstractAction() {
+        // switches to hourbyhour for home when down arrow pressed
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
@@ -337,9 +373,4 @@ class MainScreen {
             }
         }
     };
-
-
-
-
-
 }
