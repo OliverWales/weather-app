@@ -40,7 +40,6 @@ public class HourByHour implements ActionListener {
     private JPanel createPanel() throws IOException {
 //        panel for the whole screen
         JPanel screen = new JPanel(new BorderLayout());
-
 //        panel for the top information
         JPanel top = new JPanel(new GridLayout(1, 0));
         // back button to make panel disappear so to return to home page
@@ -86,7 +85,7 @@ public class HourByHour implements ActionListener {
     //  method for getting the necessary icon image
     private BufferedImage getIconImage(String weather) throws IOException {
         BufferedImage icon = null;
-        icon = ImageIO.read(new File("src/data/icons/" + weather + "d.png"));
+        icon = ImageIO.read(new File("/home/archie/Documents/weather-app/data/icons/" + weather + "d.png"));
         return icon;
     }
 
