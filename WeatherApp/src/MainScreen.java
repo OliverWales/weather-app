@@ -12,24 +12,60 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.concurrent.TimeUnit;
 
-class UI {
+class MainScreen {
+    // Holds home and destination forecasts
     private Forecast homeForecast;
     private Forecast destForecast;
-    BufferedImage[] images;
-    JPanel screen;
-    ArrayList<Path> files;
+
+    // Holds panel & weather types
     JPanelWBI[] panels;
     ArrayList<String> weather;
+
+    // Holds current home & destination
     String home;
     String dest;
+
+    // indices of current weather codes
     int homeWeather;
-    JFrame f_comp;
     int destWeather;
+
+    // frames for each screen
+    static JFrame fHome;
+    JFrame fDay;
+    JFrame fWeek;
+
+    // size of phone screen
     private int pHeight = 1920/3;
     private int pWidth = 1080/3;
-    UI(String h, String d) throws Exception{
+
+
+    MainScreen(String h, String d) throws Exception{
+        home = h;
+        dest = d;
+        // initialises weather array & panels
+        initWeather();
+        initBackgroundPanels();
+
+        // initialises home frame
+        initHome();
+
+        // initialises day frame
+
+
+        // initialises week frame
+
+    }
+
+    /**  DONE COMMENTING **/
+    public static void main(String[] args) throws Exception{
+        MainScreen ui = new MainScreen("ND", "ND");
+        ui.initHome();
+    }
+
+    /**  DONE COMMENTING **/
+    public void initWeather(){
+        // initialises weather types array
         weather = new ArrayList<>();
         weather.add("04d");
         weather.add("03d");
@@ -41,113 +77,95 @@ class UI {
         weather.add("01d");
         weather.add("02d");
         weather.add("11d");
+    }
 
-        f_comp = new JFrame();
-        f_comp.setSize(1080/3,1920/3);
-        // hide JPanel by calling setVisible(false)
-        screen = new JPanel();
-        screen.setSize(1080/3, 1920/3);
-        f_comp.add(screen);
-        GridLayout experimentLayout = new GridLayout(2,1);
-        screen.setLayout(experimentLayout);
+    /**  DONE COMMENTING **/
+    public void initBackgroundPanels() throws Exception{
+        // array of images corresponding to types of weather
+        BufferedImage[] images = new BufferedImage[10];
+        // array of sources of images
+        ArrayList<Path> files = new ArrayList<>();
 
-        home = "Cambridge,UK";
-        dest = "Oxford,UK";
-
-        images = new BufferedImage[10];
-        files = new ArrayList<>();
+        // adds all sources to file array
         Files.newDirectoryStream(Paths.get("src/data/backs"))
                 .forEach(x -> files.add(x));
+
+        // sorts file array so that indices correspond to weather correctly
         Collections.sort(files,
                 new Comparator<Path>() {public int compare(Path f1, Path f2){return f1.toString().compareTo(f2.toString()); }});
+
+        // creates buffered image objects from files
+
         for (int i = 0; i<10; i++){
             images[i] = ImageIO.read(files.get(i).toFile());
         }
+
+        // array of panels with background images corresponding to weather types
         panels = new JPanelWBI[10];
         for (int i = 0; i<10; i++){
-            panels[i] = new JPanelWBI(images[i],1920/6, 1080/3);
+            panels[i] = new JPanelWBI(images[i],pHeight/2, pWidth);
         }
-        /*
-        init("rain");
-        TimeUnit.SECONDS.sleep(1);
-        changeDest("thunderstorm");
-        TimeUnit.SECONDS.sleep(1);
-        changeHome("mist");*/
-        //test();
-        /*for (JPanelWBI x : panels){
-            f_comp.add(x);
-            f_comp.setVisible(true);
-            TimeUnit.SECONDS.sleep(2);
-            f_comp.remove(x);
-        }
-        */
     }
-
-    public static void main(String[] args) throws Exception{
-        UI ui = new UI("ND", "ND");
-        ui.init();
+    static public void reInit(){
+        fHome.setVisible(true);
     }
+    /**  DONE COMMENTING **/
+    public void initHome() throws IOException{
+        // creates home frame & sets size to size of phone
+        fHome = new JFrame();
+        fHome.setSize(pWidth,pHeight);
+        fHome.setLayout(new GridLayout(2,1));
 
-    /*public void test() throws Exception{
-        init();
-        TimeUnit.SECONDS.sleep(2);
-        changeHome("broken_cloud");
-        changeDest("cloud");
-        TimeUnit.SECONDS.sleep(2);
-        changeHome("mist");
-        changeDest("ND");
-        TimeUnit.SECONDS.sleep(2);
-        changeHome("rain");
-        changeDest("shower");
-        TimeUnit.SECONDS.sleep(2);
-        changeHome("snow");
-        changeDest("sun");
-        TimeUnit.SECONDS.sleep(2);
-        changeHome("sun_and_cloud");
-        changeDest("thunderstorm");
-    }*/
-
-    public void init() throws IOException{
+        // gets weather codes and gets forecasts
         String hWeatherCode = getHomeWeatherCode();
         String dWeatherCode = getDestWeatherCode();
 
+        // gets index of home weather, creates clone of homePanel
         homeWeather = weather.indexOf(hWeatherCode);
         JPanelWBI homeP = new JPanelWBI(panels[homeWeather]);
+
+        // gets index of destination weather, creates clone of destPanel
         destWeather = weather.indexOf(dWeatherCode);
         JPanelWBI destP = new JPanelWBI(panels[destWeather]);
 
-        setUpHomePanel(homeP);
-        setUpDestPanel(destP);
+        // sets up the homePanel & destination panel
+        if (!hWeatherCode.equals("ND")){
+            setUpHomePanel(homeP);
+        }
+        if (!dWeatherCode.equals("ND")){
+            setUpDestPanel(destP);
+        }
 
-        screen.add(homeP);
-        screen.add(destP);
-        f_comp.add(screen);
-        f_comp.setVisible(true);
+        //
+        fHome.add(homeP);
+        fHome.add(destP);
+        fHome.setVisible(true);
     }
 
     public void changeHome(String newHomeWeather) throws IOException{
-        screen.removeAll();
+        fHome.removeAll();
         homeWeather = weather.indexOf(newHomeWeather);
         JPanelWBI homeP = new JPanelWBI(panels[homeWeather]);
         JPanelWBI destP = new JPanelWBI(panels[destWeather]);
         setUpHomePanel(homeP);
-        screen.add(homeP);
-        screen.add(destP);
-        f_comp.setVisible(true);
+        fHome.add(homeP);
+        fHome.add(destP);
+        fHome.setVisible(true);
     }
 
     public void changeDest(String newDestWeather) throws IOException{
-        screen.removeAll();
+        fHome.removeAll();
         destWeather = weather.indexOf(newDestWeather);
         JPanelWBI homeP = new JPanelWBI(panels[homeWeather]);
         JPanelWBI destP = new JPanelWBI(panels[destWeather]);
         setUpDestPanel(destP);
-        screen.add(homeP);
-        screen.add(destP);
-        f_comp.setVisible(true);
+        fHome.add(homeP);
+        fHome.add(destP);
+        fHome.setVisible(true);
     }
 
     private void setUpHomePanel(JPanelWBI panel) throws IOException{
+
         panel.setLayout(new BorderLayout());
         JLabel location = new JLabel(home);
         BufferedImage icon = getIcon(getHomeWeatherCode());
@@ -172,9 +190,9 @@ class UI {
     }
 
     private BufferedImage getIcon(String weather) throws IOException {
-            BufferedImage icon = null;
-            icon = ImageIO.read(new File("src/data/icons/" + weather + ".png"));
-            return icon;
+        BufferedImage icon = null;
+        icon = ImageIO.read(new File("src/data/icons/" + weather + ".png"));
+        return icon;
     }
 
     private String getHomeWeatherCode(){
