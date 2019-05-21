@@ -1,3 +1,8 @@
 cambridge
 oxford
 london
+stamford
+ND
+london,UK
+London,UK
+Oxford,UK

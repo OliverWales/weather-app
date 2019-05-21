@@ -3,10 +3,14 @@ package WeatherApp;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,8 +18,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
-class MainScreen {
+class MainScreen implements ActionListener {
     // Holds home and destination forecasts
     private Forecast homeForecast;
     private Forecast destForecast;
@@ -41,10 +46,31 @@ class MainScreen {
     private int pHeight = 1920/3;
     private int pWidth = 1080/3;
 
+    static final String history = "/home/archie/Documents/weather-app/data/history.txt"; // file containing previous searches
+    private List<String> locations; // previous searches loaded into a List
+    JComboBox homeBox, destBox;
+    private String selectedHomeLocation;
+    private String selectedDestLocation;
 
     MainScreen(String h, String d) throws Exception{
         home = h;
         dest = d;
+
+        // initialises combo box
+        locations = Files.readAllLines(Paths.get(history)); // read in history file
+
+        homeBox = new JComboBox((Files.readAllLines(Paths.get(history))).toArray()); // create a new JComboBox
+        selectedHomeLocation = null; // nothing is selected initially
+        homeBox.setEditable(true); // user can type into the search bar
+        homeBox.setSelectedIndex(-1); // search bar is empty initially
+        homeBox.addActionListener(this); // call this.actionPerformed() when a city is selected
+
+        destBox = new JComboBox((Files.readAllLines(Paths.get(history))).toArray()); // create a new JComboBox
+        selectedDestLocation = null; // nothing is selected initially
+        destBox.setEditable(true); // user can type into the search bar
+        destBox.setSelectedIndex(-1); // search bar is empty initially
+        destBox.addActionListener(this); // call this.actionPerformed() when a city is selected
+
         // initialises weather array & panels
         initWeather();
         initBackgroundPanels();
@@ -56,7 +82,6 @@ class MainScreen {
 
 
         // initialises week frame
-
     }
 
     /**  DONE COMMENTING **/
@@ -89,7 +114,7 @@ class MainScreen {
         ArrayList<Path> files = new ArrayList<>();
 
         // adds all sources to file array
-        Files.newDirectoryStream(Paths.get("src/data/backs"))
+        Files.newDirectoryStream(Paths.get("data/backs"))
                 .forEach(x -> files.add(x));
 
         // sorts file array so that indices correspond to weather correctly
@@ -226,7 +251,7 @@ class MainScreen {
         panel.setLayout(new BorderLayout());
 
         JPanel searchBar = new JPanel();
-        searchBar.add(new HistorySearchBar());
+        searchBar.add(homeBox);
         searchBar.setOpaque(false);
         panel.add(searchBar, BorderLayout.NORTH);
 
@@ -251,7 +276,7 @@ class MainScreen {
         panel.setLayout(new BorderLayout());
 
         JPanel searchBar = new JPanel();
-        searchBar.add(new HistorySearchBar());
+        searchBar.add(destBox);
         searchBar.setOpaque(false);
         panel.add(searchBar, BorderLayout.NORTH);
 
@@ -273,7 +298,8 @@ class MainScreen {
 
     private BufferedImage getIcon(String weather) throws IOException {
         BufferedImage icon = null;
-        icon = ImageIO.read(new File("src/data/icons/" + weather + ".png"));
+        System.out.println(weather);
+        icon = ImageIO.read(new File("data/icons/" + weather + ".png"));
         return icon;
     }
 
@@ -301,5 +327,45 @@ class MainScreen {
             dWeatherCode = destForecast.getIcon() + "d";
         }
         return dWeatherCode;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String selectedLocation;
+
+        String nextHomeLocation = (String) homeBox.getSelectedItem(); // update the selected location
+        String nextDestLocation = (String) destBox.getSelectedItem(); // update the selected location
+        if (nextDestLocation == null) nextDestLocation = "ND";
+        if (nextHomeLocation == null) nextHomeLocation = "ND";
+        if (!nextHomeLocation.equals(selectedHomeLocation)) {
+            selectedLocation = nextHomeLocation;
+            selectedHomeLocation = nextHomeLocation;
+            try {
+                changeHomeLocation(selectedHomeLocation);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            selectedLocation = nextDestLocation;
+            selectedDestLocation = nextDestLocation;
+            try {
+                changeDestLocation(selectedDestLocation);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        // check if user hasn't searched for the selected location before
+        if (!locations.contains(selectedLocation)) {
+            // if so, update our history file (append new search to the end) and update our history List
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(history, true));
+                writer.write(selectedLocation + '\n');
+                writer.close();
+                locations.add(selectedLocation);
+                homeBox.addItem(selectedLocation);
+                destBox.addItem(selectedLocation);
+            } catch (IOException ex) {
+                System.out.println("[!] Can't find history file: " + history);
+            }
+        }
     }
 }

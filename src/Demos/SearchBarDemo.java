@@ -1,4 +1,4 @@
-package Demos;
+/* package Demos;
 
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
@@ -29,10 +29,9 @@ package Demos;
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+
 
 import WeatherApp.CitySearchBar;
-import WeatherApp.HistorySearchBar;
 
 import java.awt.*;
 import javax.swing.*;
@@ -82,7 +81,7 @@ public class SearchBarDemo extends JPanel {
      * Create the GUI and show it.  For thread safety,
      * this method should be invoked from the
      * event-dispatching thread.
-     */
+
     private static void createAndShowGUI() throws IOException {
         //Create and set up the window.
         JFrame frame = new JFrame("SearchBar Demo");
@@ -113,3 +112,4 @@ public class SearchBarDemo extends JPanel {
     }
 }
 
+*/

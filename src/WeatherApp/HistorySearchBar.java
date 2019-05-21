@@ -1,4 +1,4 @@
-package WeatherApp;
+/* package WeatherApp;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,9 +14,6 @@ import java.util.List;
 // The drop down list contains a list of the user's previous searches.
 // This list is stored in a file which is updated upon entering a new search.
 public class HistorySearchBar extends JComboBox implements ActionListener {
-    static final String history = "/home/archie/Documents/weather-app/data/history.txt"; // file containing previous searches
-    private List<String> locations; // previous searches loaded into a List
-    private String selectedLocation; // currently selected city
 
     public HistorySearchBar() throws IOException {
         super((Files.readAllLines(Paths.get(history))).toArray()); // create a new JComboBox
@@ -49,3 +46,6 @@ public class HistorySearchBar extends JComboBox implements ActionListener {
     }
 
 }
+
+
+ */
