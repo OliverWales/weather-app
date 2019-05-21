@@ -48,21 +48,23 @@ class MainScreen {
     private int pHeight = 1920/3;
     private int pWidth = 1080/3;
 
-    static final String cities = "data/citylistShortened.txt"; // file containing previous searches
+    // file containing city names, not including long names (see RemoveLong tool)
+    static final String cities = "data/citylistShortened.txt";
     private List<String> locations; // previous searches loaded into a List
-    JComboBox homeBox, destBox;
+
+    JComboBox homeBox, destBox; // home and destination search bars
 
     MainScreen(String h, String d) throws Exception{
         // sets home and destination to locations given
         home = h;
         dest = d;
         
-        // gets forecasts
+        // gets initial forecasts
         homeForecast = Weather.getCurrentWeather(h);
         destForecast = Weather.getCurrentWeather(d);
         
         // initialises combo boxes
-        locations = Files.readAllLines(Paths.get(cities)); // read in history file
+        locations = Files.readAllLines(Paths.get(cities)); // read in city file
 
         homeBox = new JComboBox(locations.toArray()); // ComboBox to enter home location into (provides list of cities)
         homeBox.setEditable(true);  // allow user to type into box
@@ -103,6 +105,9 @@ class MainScreen {
     }
 
     public static void main(String[] args) throws Exception{
+        // initialise the main screen with default values:
+        // home: Cambridge
+        // destination: Oxford
         MainScreen ui = new MainScreen("Cambridge,UK", "Oxford,UK");
         fHome.hasFocus();
     }
@@ -129,7 +134,7 @@ class MainScreen {
         ArrayList<Path> files = new ArrayList<>();
 
         // adds all sources to file array
-        Files.newDirectoryStream(Paths.get("data/backs"))
+        Files.newDirectoryStream(Paths.get("data/backgrounds"))
                 .forEach(x -> files.add(x));
 
         // sorts file array so that indices correspond to weather correctly
@@ -137,7 +142,6 @@ class MainScreen {
                 new Comparator<Path>() {public int compare(Path f1, Path f2){return f1.toString().compareTo(f2.toString()); }});
 
         // creates buffered image objects from files
-
         for (int i = 0; i<10; i++){
             images[i] = ImageIO.read(files.get(i).toFile());
         }
@@ -307,7 +311,7 @@ class MainScreen {
     private void setUpDestPanel(JPanelWBI panel) throws IOException{
         panel.setLayout(new BorderLayout());
 
-        // creates basic framework for home screen panels
+        // creates basic framework for destination screen panels
         
         // adds a search bar to panel
         JPanel searchBar = new JPanel();
@@ -353,7 +357,7 @@ class MainScreen {
     }
 
     private Action hbhDest = new AbstractAction() {
-        // switches to hourbyhour for destination when up arrow pressed
+        // switches to hour-by-hour page for destination when up arrow pressed (emulate swipe)
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
@@ -365,7 +369,7 @@ class MainScreen {
     };
 
     private Action hbhHome = new AbstractAction() {
-        // switches to hourbyhour for home when down arrow pressed
+        // switches to hour-by-hour page for home when down arrow pressed (emulate swipe)
         @Override
         public void actionPerformed(ActionEvent e) {
             try {

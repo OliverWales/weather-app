@@ -2,6 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed74ee51-a7bb-489a-b622-646272815bf4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/data/backs/01d.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/backgrounds/01d.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/backs/02d.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/backgrounds/02d.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/backs/03d.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/backgrounds/03d.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/backs/04d.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/backgrounds/04d.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/backs/09d.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/backgrounds/09d.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/backs/10d.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/backgrounds/10d.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/backs/11d.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/backgrounds/11d.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/backs/13d.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/backgrounds/13d.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/backs/50d.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/backgrounds/50d.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/backs/no_dest.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/data/backgrounds/no_dest.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/history.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +29,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="84" column="66" lean-forward="true" selection-start-line="84" selection-start-column="66" selection-end-line="84" selection-end-column="66" />
+            <state relative-caret-position="812">
+              <caret line="54" column="67" selection-start-line="54" selection-start-column="67" selection-end-line="54" selection-end-column="67" />
+              <folding>
+                <element signature="e#12082#12410#0" expanded="true" />
+                <element signature="e#12409#12410#0" expanded="true" />
+                <element signature="e#12442#12765#0" expanded="true" />
+                <element signature="e#12764#12765#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tools/RemoveLong.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="5" column="62" selection-start-line="5" selection-start-column="62" selection-end-line="5" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -154,7 +180,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.RemoveLong">
+  <component name="RunManager" selected="Application.MainScreen">
     <configuration name="DayByDay" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="WeatherApp.DayByDay" />
       <module name="weather-app" />
@@ -222,8 +248,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.RemoveLong" />
         <item itemvalue="Application.MainScreen" />
+        <item itemvalue="Application.RemoveLong" />
         <item itemvalue="Application.UI" />
         <item itemvalue="Application.DayByDay" />
         <item itemvalue="Application.HourByHour" />
@@ -396,13 +422,6 @@
     <entry file="file://$PROJECT_DIR$/data/citylistShortened.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tools/RemoveLong.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="5" column="62" selection-start-line="5" selection-start-column="62" selection-end-line="5" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/WeatherApp/SJLabel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
@@ -420,10 +439,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tools/RemoveLong.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="5" column="62" selection-start-line="5" selection-start-column="62" selection-end-line="5" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="84" column="66" lean-forward="true" selection-start-line="84" selection-start-column="66" selection-end-line="84" selection-end-column="66" />
+        <state relative-caret-position="812">
+          <caret line="54" column="67" selection-start-line="54" selection-start-column="67" selection-end-line="54" selection-end-column="67" />
+          <folding>
+            <element signature="e#12082#12410#0" expanded="true" />
+            <element signature="e#12409#12410#0" expanded="true" />
+            <element signature="e#12442#12765#0" expanded="true" />
+            <element signature="e#12764#12765#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

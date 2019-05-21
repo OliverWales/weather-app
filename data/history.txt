@@ -1,6 +1,0 @@
-London,UK
-Oxford,UK
-Cambridge,UK
-Barcelona,ES
-Paris,FR
-Ottawa,CA
