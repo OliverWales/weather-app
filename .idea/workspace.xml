@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed74ee51-a7bb-489a-b622-646272815bf4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/WeatherApp/DayByDay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WeatherApp/JPanelWBI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1034">
-              <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+            <state relative-caret-position="387">
+              <caret line="169" lean-forward="true" selection-start-line="169" selection-end-line="169" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WeatherApp/HourByHour.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4205">
-              <caret line="155" selection-start-line="155" selection-end-line="155" />
+            <state relative-caret-position="1350">
+              <caret line="156" selection-start-line="156" selection-end-line="156" />
               <folding>
                 <element signature="e#4572#4573#0" expanded="true" />
                 <element signature="e#4613#4614#0" expanded="true" />
@@ -114,9 +111,9 @@
         <option value="$PROJECT_DIR$/doc/SearchBar.md" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/WeatherApp/JPanelWBI.java" />
-        <option value="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" />
         <option value="$PROJECT_DIR$/src/WeatherApp/DayByDay.java" />
         <option value="$PROJECT_DIR$/src/WeatherApp/MainScreen.java" />
+        <option value="$PROJECT_DIR$/src/WeatherApp/HourByHour.java" />
       </list>
     </option>
   </component>
@@ -244,7 +241,7 @@
     <frame x="-2" y="0" width="3204" height="1760" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26415703" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.26415703" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -253,7 +250,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32980832" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32980832" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -271,6 +268,34 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26415703" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32980832" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32980832" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+    </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/doc/SearchBar.md">
@@ -280,17 +305,6 @@
             <caret line="8" selection-start-line="8" selection-end-line="8" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WeatherApp/HourByHour.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4205">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
-          <folding>
-            <element signature="e#4572#4573#0" expanded="true" />
-            <element signature="e#4613#4614#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -358,10 +372,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WeatherApp/MainScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1034">
-          <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+        <state relative-caret-position="387">
+          <caret line="169" lean-forward="true" selection-start-line="169" selection-end-line="169" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WeatherApp/HourByHour.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="156" selection-start-line="156" selection-end-line="156" />
+          <folding>
+            <element signature="e#4572#4573#0" expanded="true" />
+            <element signature="e#4613#4614#0" expanded="true" />
           </folding>
         </state>
       </provider>

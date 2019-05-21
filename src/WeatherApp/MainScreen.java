@@ -42,7 +42,6 @@ class UI {
         weather.add("02d");
         weather.add("11d");
 
-        f_comp = new JFrame();
         f_comp.setSize(1080/3,1920/3);
         // hide JPanel by calling setVisible(false)
         screen = new JPanel();
@@ -184,7 +183,8 @@ class UI {
             hWeatherCode = "ND";
         }
         else{
-            homeForecast = Weather.getCurrentWeather(home);
+            homeForecast = Weather.getCurrentWeather(
+        f_comp = new JFrame();home);
             hWeatherCode = homeForecast.getIcon() + "d";
         }
         return hWeatherCode;
