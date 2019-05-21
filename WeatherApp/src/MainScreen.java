@@ -34,8 +34,6 @@ class MainScreen {
 
     // frames for each screen
     static JFrame fHome;
-    JFrame fDay;
-    JFrame fWeek;
 
     // size of phone screen
     private int pHeight = 1920/3;
@@ -52,17 +50,11 @@ class MainScreen {
         // initialises home frame
         initHome();
 
-        // initialises day frame
-
-
-        // initialises week frame
-
     }
 
     /**  DONE COMMENTING **/
     public static void main(String[] args) throws Exception{
         MainScreen ui = new MainScreen("ND", "ND");
-        ui.initHome();
     }
 
     /**  DONE COMMENTING **/
