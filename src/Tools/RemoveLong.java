@@ -2,6 +2,8 @@ package Tools;
 
 import java.io.*;
 
+// Only include city names < 13 characters long in citylistShortened.txt in order to
+// decrease the size of our search bar and spped up load time.
 public class RemoveLong {
     public static void main(String[] args) throws FileNotFoundException {
         File fout = new File("/home/archie/Documents/weather-app/data/citylistShortened.txt");
