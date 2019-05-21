@@ -12,6 +12,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 class MainScreen {
     // Holds home and destination forecasts
@@ -38,7 +40,6 @@ class MainScreen {
     // size of phone screen
     private int pHeight = 1920/3;
     private int pWidth = 1080/3;
-
 
     MainScreen(String h, String d) throws Exception{
         home = h;
@@ -115,6 +116,39 @@ class MainScreen {
         fHome = new JFrame();
         fHome.setSize(pWidth,pHeight);
         fHome.setLayout(new GridLayout(2,1));
+
+        // add keyboard listener for screen change
+        fHome.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
+                switch (e.getKeyCode()) {
+                    case 38:
+                        // up
+                        break;
+                    case 40:
+                        // down
+                        break;
+                    case 37:
+                        // left
+                        break;
+                    case 39:
+                        // right
+                        break;
+                    default:
+                        // other
+                        break;
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
 
         // gets weather codes and gets forecasts
         String hWeatherCode = getHomeWeatherCode();
